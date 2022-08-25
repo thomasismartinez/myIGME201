@@ -62,6 +62,9 @@ namespace Martinez_HelloWorld
             {
                 Console.Write(word + ", ");
             }
+
+            Console.WriteLine("\npress 'enter' to close program");
+            Console.ReadLine();
         }
     }
 }
