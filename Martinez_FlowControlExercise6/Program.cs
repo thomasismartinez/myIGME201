@@ -62,4 +62,4 @@ namespace Mandelbrot
 
         }
     }
-}4
+}
