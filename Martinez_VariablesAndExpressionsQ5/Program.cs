@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,12 @@ namespace Martinez_VariablesAndExpressionsQ5
             }
             //output product
             Console.WriteLine("Product is: " + (ints[0] * ints[1] * ints[2] * ints[3]));
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write(5 / i);
+            }
+
         }
     }
 }
