@@ -21,12 +21,55 @@ namespace Mandelbrot
         [STAThread]
         static void Main(string[] args)
         {
+            double realCoordStart, imagCoordStart;
+            double realCoordEnd, imagCoordEnd;
+            double realIncrement, imagIncrement;
             double realCoord, imagCoord;
             double realTemp, imagTemp, realTemp2, arg;
             int iterations;
-            for (imagCoord = 1.2; imagCoord >= -1.2; imagCoord -= 0.05)
+
+            while (true)
             {
-                for (realCoord = -0.6; realCoord <= 1.77; realCoord += 0.03)
+                //ask for each coordinate inputed in decimal terms
+                Console.WriteLine("Please input start and end values for x and y.\n" +
+                    "* decimal values between -2.0 and 2.0\n" +
+                    "* x start must be less than x end\n" +
+                    "* y start must be greater than y end\n");
+
+                //input x start
+                Console.WriteLine("x start:");
+                realCoordStart = Double.Parse(Console.ReadLine());
+
+                //input x end
+                Console.WriteLine("x end:");
+                realCoordEnd = Double.Parse(Console.ReadLine());
+
+                //input y start
+                Console.WriteLine("y start");
+                imagCoordStart = Double.Parse(Console.ReadLine());
+
+                //input y end
+                Console.WriteLine("y end");
+                imagCoordEnd = Double.Parse(Console.ReadLine());
+
+                //check for valid inputs
+                if ( (imagCoordStart > imagCoordEnd) && (realCoordStart < realCoordEnd) )
+                {
+                    //move on from input
+                    break;
+                }
+                //else reapet query
+            }
+
+            //calculate proper increments
+            realIncrement = (realCoordEnd - realCoordStart) / 80;
+            imagIncrement = (imagCoordStart - imagCoordEnd) / 48;
+
+            //iterate from y start to y end (48 increments)
+            for (imagCoord = imagCoordStart; imagCoord >= imagCoordEnd; imagCoord -= imagIncrement)
+            {
+                //iterate from x start to x end (80 increments)
+                for (realCoord = realCoordStart; realCoord <= realCoordEnd; realCoord += realIncrement)
                 {
                     iterations = 0;
                     realTemp = realCoord;
