@@ -3,8 +3,10 @@
 namespace Mandelbrot
 {
     /// <summary>
-    /// This class generates Mandelbrot sets in the console window!
+    /// This class generates Mandelbrot sets in the console window
+    /// based off of user inputs for the bounds of the viewport
     /// </summary>
+    /// Author: Thomas Martinez
 
 
     class Class1
