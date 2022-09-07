@@ -65,7 +65,12 @@ namespace Martinez_ParsingAndFormatting
                             else
                             {
                                 Console.WriteLine("You have already guessed " + response + ", try another value.");
+                                
                             }
+                        }
+                        else
+                        {
+                            throw new Exception();
                         }
                     }
                     //output error messege if input is invalid
