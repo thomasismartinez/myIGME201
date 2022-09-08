@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Martinez_ParsingAndFormatting
 {
-    // Class Program
+    // Class: Program
     // Author: Thomas Martinez
     // Purpose: Parsing And Formatting Exercise
     // Restrictions: None
     static internal class Program
     {
-        // Method Main
+        // Method: Main
         // Purpose: A game where the player has to guess a random number between 0 and 100
         // Restrictions: None
         static void Main(string[] args)
