@@ -61,66 +61,77 @@ namespace Martinez_MadLibs
 
             input.Close();
 
-            //ask the user if they would like to play Mad Libs
-            Console.WriteLine("Would you like to play Mad Libs");
-            string yesNo = null;
-
-            //loop until a valid response is given
-            while (yesNo == null)
+            //loop to ask if they would like to play again
+            while (true)
             {
-                //if the input is neither yes or no than try prompting again
-                yesNo = Console.ReadLine().ToLower();
-                if (yesNo != "yes" && yesNo != "no")
-                {
-                    Console.WriteLine("You Must input either the word \"yes\" or \"no\"");
-                    yesNo = null;
-                }
-            }
 
+                //ask the user if they would like to play Mad Libs
+                Console.WriteLine("Would you like to play Mad Libs");
+                string yesNo = null;
 
-            //if answer is "yes" then play Mad Libs
-            if (yesNo == "yes")
-            {
-                //prompt the user for which Mad Lib they would like ot play (nChoice)
-                Console.WriteLine("Which Mad Lib would you like to play? (1 through " + (madLibs.Length - 1) + ")");
-                while (true)
+                //loop until a valid response is given
+                while (yesNo == null)
                 {
-                    //if input is valid parse it to int nChoice
-                    try
+                    //if the input is neither yes or no than try prompting again
+                    yesNo = Console.ReadLine().ToLower();
+                    if (yesNo != "yes" && yesNo != "no")
                     {
-                        nChoice = Int32.Parse(Console.ReadLine());
-                        break;
-                    }
-                    //if input is invalid give error messege and try again
-                    catch
-                    {
-                        Console.WriteLine("Input must be and integer between 1 and " + (madLibs.Length - 1));
+                        Console.WriteLine("You Must input either the word \"yes\" or \"no\"");
+                        yesNo = null;
                     }
                 }
 
-                //split the mad lib into sperate words
-                string[] words = madLibs[nChoice].Split(' ');
 
-                foreach (string word in words)
+                //if answer is "yes" then play Mad Libs
+                if (yesNo == "yes")
                 {
-                    //if word is a placeholder
-                    if (word.StartsWith("{"))
+                    //prompt the user for which Mad Lib they would like ot play (nChoice)
+                    Console.WriteLine("Which Mad Lib would you like to play? (1 through " + (madLibs.Length - 1) + ")");
+                    while (true)
                     {
-                        //prompt the user for the replacement
-                        Console.WriteLine("Please input a " + (word.Substring(1, word.Length - 2)).Replace('_', ' '));
+                        //if input is valid parse it to int nChoice
+                        try
+                        {
+                            nChoice = Int32.Parse(Console.ReadLine());
+                            break;
+                        }
+                        //if input is invalid give error messege and try again
+                        catch
+                        {
+                            Console.WriteLine("Input must be and integer between 1 and " + (madLibs.Length - 1));
+                        }
+                    }
 
-                        //and append the user response to the result string
-                        resultString += Console.ReadLine() + " ";
-                    }
-                    //else append word the the result string
-                    else
+                    //split the mad lib into sperate words
+                    string[] words = madLibs[nChoice].Split(' ');
+
+                    foreach (string word in words)
                     {
-                        resultString += word + " ";
+                        //if word is a placeholder
+                        if (word.StartsWith("{"))
+                        {
+                            //prompt the user for the replacement
+                            Console.WriteLine("Please input a " + (word.Substring(1, word.Length - 2)).Replace('_', ' '));
+
+                            //and append the user response to the result string
+                            resultString += Console.ReadLine() + " ";
+                        }
+                        //else append word the the result string
+                        else
+                        {
+                            resultString += word + " ";
+                        }
                     }
+
+                    //Print final result
+                    Console.WriteLine(resultString);
                 }
 
-                //Print final result
-                Console.WriteLine(resultString);
+                //if they dont want to play again end the program
+                else
+                {
+                    break;
+                }
             }
         }
     }
