@@ -51,7 +51,7 @@ class Program
         Console.BackgroundColor = ConsoleColor.Black;
         Console.ForegroundColor = ConsoleColor.White;
 
-        Console.WriteLine("Math Quiz Original!");
+        Console.WriteLine("Math Quiz");
         Console.WriteLine();
 
         // fetch the user's name into myName
