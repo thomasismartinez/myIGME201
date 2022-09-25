@@ -16,8 +16,8 @@ namespace UnitTest1_Q12
     {
         /// <summary>
         /// Method: Main
-        /// Purpose: 
-        /// 
+        /// Purpose: Give user a raise if their name is Thomas
+        /// Restrictions: None
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
