@@ -23,7 +23,7 @@ namespace UnitTest1_Q12
 
         /// <summary>
         /// Method: Main
-        /// Purpose: Give user a raise if they're name Thomas
+        /// Purpose: Give user a raise if their name Thomas
         /// Restrictions: None
         /// </summary>
         /// <param name="args"></param>
