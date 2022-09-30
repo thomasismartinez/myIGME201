@@ -26,6 +26,7 @@ namespace Traffic
             // the IPassengerCarrier interface so it won't pass as a parameter
         }
 
+        // call LoadPassenger using an object that implements IPassengerCarrier and print said object using ToString()
         public static void AddPassenger(IPassengerCarrier vehicle)
         {
             vehicle.LoadPassenger();
