@@ -43,9 +43,15 @@ namespace CourseLib
             }
         }
 
-        public void Remove(string courseCode) { }
+        public void Remove(string courseCode)
+        {
+            if (courseCode != null)
+            {
+                sortedList.Remove(courseCode);
+            }
+        }
 
-        public Courses()
+    public Courses()
         {
             Course thisCourse;
             Schedule thisSchedule;
