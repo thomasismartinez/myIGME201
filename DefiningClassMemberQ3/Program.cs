@@ -31,7 +31,7 @@ namespace DefiningClassMemberQ3
     public class MyDerivedClass : MyClass
     {
         public override string GetString() {
-            return MyString + " (output from the derived class)";
+            return base.GetString() + " (output from the derived class)";
         }
     }
 
@@ -46,7 +46,6 @@ namespace DefiningClassMemberQ3
 
         public string MyString
         {
-            get { return myString; }
             set { myString = value; }
         }
 
