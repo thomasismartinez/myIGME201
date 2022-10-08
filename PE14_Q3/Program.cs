@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace PE14_Q3
 {
-    internal class Program
+    /// <summary>
+    /// Class: Program
+    /// Author: Thomas Martinez
+    /// Purpose: PE13 Q3
+    /// Restrictions: None
+    /// </summary>
+    static internal class Program
     {
         static void Main(string[] args)
         {
+            // create object of both classes
             MyClassA A = new MyClassA();
             MyClassB B = new MyClassB();
 
+            // call local MyMethod() for each object
             MyMethod(A);
             MyMethod(B);
         }
