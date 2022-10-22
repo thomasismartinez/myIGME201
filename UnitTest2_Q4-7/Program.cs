@@ -81,74 +81,80 @@ namespace UnitTest2_Q4_7
 
         public static bool operator ==(Tardis tardisA, Tardis tardisB)
         {
-            if (tardisA.WhichDrWho == tardisB.WhichDrWho)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // if the doctors are the same return true
+            if (tardisA.WhichDrWho == tardisB.WhichDrWho) { return true; }
+
+            // otherwise return false
+            else { return false; }
         }
 
         public static bool operator !=(Tardis tardisA, Tardis tardisB)
         {
-            if (tardisA.WhichDrWho != tardisB.WhichDrWho)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // it the doctors are not the same return true
+            if (tardisA.WhichDrWho != tardisB.WhichDrWho) { return true; }
+
+            // otherwise return false
+            else { return false; }
         }
 
         public static bool operator <(Tardis tardisA, Tardis tardisB)
         {
-            if (tardisA.WhichDrWho < tardisB.WhichDrWho)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // if doctor A is not 10 and B is then return true
+            if (tardisA.WhichDrWho != 10 && tardisB.WhichDrWho == 10) { return true; }
+
+            // if doctor A is 10 and B is not then return false
+            else if (tardisA.WhichDrWho == 10 && tardisB.WhichDrWho != 10) { return false; }
+
+            // if doctor A is less than B
+            else if (tardisA.WhichDrWho < tardisB.WhichDrWho) { return true; }
+
+            // otherwise return false
+            else { return false; }
         }
 
         public static bool operator >(Tardis tardisA, Tardis tardisB)
         {
-            if (tardisA.WhichDrWho > tardisB.WhichDrWho)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // if doctor A is 10 and B is not then return true
+            if (tardisA.WhichDrWho == 10 && tardisB.WhichDrWho != 10) { return true; }
+
+            // if doctor A is not 10 and B is the return false
+            else if (tardisB.WhichDrWho == 10 && tardisA.WhichDrWho != 10) { return false; }
+
+            // if doctor A is greater than B then return true
+            else if (tardisA.WhichDrWho > tardisB.WhichDrWho) { return true; }
+
+            // otherwise return false
+            else { return false; }
         }
 
         public static bool operator <=(Tardis tardisA, Tardis tardisB)
         {
-            if (tardisA.WhichDrWho <= tardisB.WhichDrWho)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // if doctor A is not 10 and B is then return true
+            if (tardisA.WhichDrWho != 10 && tardisB.WhichDrWho == 10) { return true; }
+
+            // if doctor A is 10 and B is not then return false
+            else if (tardisA.WhichDrWho == 10 && tardisB.WhichDrWho != 10) { return false; }
+
+            // if doctor A is less than or equal to B then return true
+            if (tardisA.WhichDrWho <= tardisB.WhichDrWho) { return true; }
+
+            // otherwise return false
+            else { return false; }
         }
 
         public static bool operator >=(Tardis tardisA, Tardis tardisB)
         {
-            if (tardisA.WhichDrWho >= tardisB.WhichDrWho)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            // if doctor A is not 10 and B is then return true
+            if (tardisA.WhichDrWho != 10 && tardisB.WhichDrWho == 10) { return true; }
+
+            // if doctor A is 10 and B is not then return false
+            else if (tardisA.WhichDrWho == 10 && tardisB.WhichDrWho != 10) { return false; }
+
+            // if doctor A is greater than or equal to B then return true
+            if (tardisA.WhichDrWho >= tardisB.WhichDrWho) { return true; }
+
+            // otherwise return false
+            else { return false; }
         }
     } 
 
