@@ -11,7 +11,35 @@ namespace UnitTest2_Q4_7
     {
         static void Main(string[] args)
         {
+            Tardis blueBox = new Tardis();
+            PhoneBooth redBox = new PhoneBooth();
 
+            UsePhone(blueBox);
+            UsePhone(redBox);
+        }
+
+        static void UsePhone(object obj)
+        {
+            // set obj as a phone
+            PhoneInterface phone = (PhoneInterface)obj;
+
+            // make call and hang up
+            phone.MakeCall();
+            phone.HangUp();
+
+            // if phone booth then open door
+            if (phone is PhoneBooth)
+            {
+                PhoneBooth booth = (PhoneBooth)phone;
+                booth.OpenDoor();
+            }
+
+            // if tardis the time travel
+            if ( phone is Tardis )
+            {
+                Tardis tardis = (Tardis)phone;
+                tardis.TimeTravel();
+            }
         }
     }
 
