@@ -15,7 +15,7 @@ namespace TestCode
             Oneshot GBE = new Oneshot("Good-bye Eri", "Fujimoto Tatsuki", "Fujimoto Tatsuki");
             MangaSeries JJK = new MangaSeries("Jujutsu Kaisen", "Gege Akutami", "Gege Akutami");
             MangaSeries BST = new MangaSeries("Beastars", "Itadaki Paru", "Itadaki Paru");
-            HardcoreReader thomas = new HardcoreReader(JJK);
+            HardcoreReader thomas = new HardcoreReader(BST);
             CasualReader becca = new CasualReader(JJK);
 
             MyMethod(thomas);
