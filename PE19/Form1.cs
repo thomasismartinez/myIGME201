@@ -419,7 +419,7 @@ namespace CourseList
             updateButton.Enabled = false;
 
             // 74. call PaintListView with the courseCode that should be shown at the top of the list
-            PaintListView(null);
+            PaintListView(copyCourse.courseCode);
         }
 
         private void ExitButton__Click(object sender, EventArgs e)
