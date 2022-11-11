@@ -25,6 +25,10 @@ namespace MyEditor
             this.cutToolStripMenuItem.Click += new EventHandler(CutToolStripMenuItem__Click);
             this.pasteToolStripMenuItem.Click += new EventHandler(PasteToolStripMenuItem__Click);
 
+            this.boldToolStripMenuItem.Click += new EventHandler(BoldToolStripMenuItem__Click);
+            this.italicsToolStripMenuItem.Click += new EventHandler(ItalicsToolStripMenuItem__Click);
+            this.underlineToolStripMenuItem.Click += new EventHandler(UnderlineToolStripMenuItem__Click);
+
             this.toolStrip.ItemClicked += new ToolStripItemClickedEventHandler(ToolStrip__ItemClicked);
 
             this.Text = "My Editor";
@@ -90,6 +94,30 @@ namespace MyEditor
             richTextBox.Paste();
         }
 
+        private void BoldToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            FontStyle fontStyle = FontStyle.Bold;
+            Font selectionFont = null;
+
+            selectionFont = richTextBox.SelectionFont;
+            if(selectionFont == null)
+            {
+                selectionFont = richTextBox.Font;
+            }
+
+
+        }
+
+        private void ItalicsToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UnderlineToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ToolStrip__ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             FontStyle fontStyle = FontStyle.Regular;
@@ -126,6 +154,30 @@ namespace MyEditor
 
                 SetSelectionFont(fontStyle, toolStripButton.Checked);
             }
+        }
+
+        private void SetSelectionFont(FontStyle fontStyle, bool bSet)
+        {
+            Font newFont = null;
+            Font selectionFont = null;
+
+            selectionFont = richTextBox.SelectionFont;
+
+            if(selectionFont == null)
+            {
+                selectionFont = richTextBox.Font;
+            }
+
+            if (bSet)
+            {
+                newFont = new Font(selectionFont, selectionFont.Style | fontStyle);
+            }
+            else
+            {
+                newFont = new Font(selectionFont, selectionFont.Style & ~fontStyle);
+            }
+
+            this.richTextBox.SelectionFont = newFont;
         }
     }
 }
