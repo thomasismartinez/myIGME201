@@ -179,7 +179,7 @@
             this.testToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(4, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(198, 27);
+            this.toolStrip.Size = new System.Drawing.Size(237, 31);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -189,7 +189,7 @@
             this.boldToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("boldToolStripButton.Image")));
             this.boldToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.boldToolStripButton.Name = "boldToolStripButton";
-            this.boldToolStripButton.Size = new System.Drawing.Size(29, 24);
+            this.boldToolStripButton.Size = new System.Drawing.Size(29, 28);
             this.boldToolStripButton.Text = "toolStripButton1";
             this.boldToolStripButton.ToolTipText = "Bold";
             // 
@@ -256,7 +256,7 @@
             this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox.Location = new System.Drawing.Point(0, 0);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(800, 371);
+            this.richTextBox.Size = new System.Drawing.Size(800, 367);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
             // 
@@ -312,7 +312,7 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.countdownLabel);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.richTextBox);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 371);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 367);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 28);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -349,7 +349,7 @@
             this.countdownLabel.ForeColor = System.Drawing.Color.Red;
             this.countdownLabel.Location = new System.Drawing.Point(0, 0);
             this.countdownLabel.Name = "countdownLabel";
-            this.countdownLabel.Size = new System.Drawing.Size(800, 371);
+            this.countdownLabel.Size = new System.Drawing.Size(800, 367);
             this.countdownLabel.TabIndex = 1;
             this.countdownLabel.Text = "3";
             this.countdownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -366,7 +366,7 @@
             this.testToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.testToolStripButton.Name = "testToolStripButton";
             this.testToolStripButton.Size = new System.Drawing.Size(29, 28);
-            this.testToolStripButton.Text = "toolStripButton1";
+            this.testToolStripButton.Text = "Timed Typing Test";
             // 
             // Form1
             // 

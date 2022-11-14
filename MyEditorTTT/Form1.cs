@@ -14,11 +14,13 @@ namespace MyEditor
 {
     public partial class Form1 : Form
     {
+        private int letters;
+
         public Form1()
         {
             InitializeComponent();
 
-            //Part 1
+            // Part 1: Editor
             this.newToolStripMenuItem.Click += new EventHandler(NewToolStripMenuItem__Click);
             this.openToolStripMenuItem.Click += new EventHandler(OpenToolStripMenuItem__Click);
             this.saveToolStripMenuItem.Click += new EventHandler(SaveToolStripMenuItem__Click);
@@ -41,7 +43,7 @@ namespace MyEditor
 
             this.Text = "My Editor";
 
-            //Part 2
+            //Part 2: Timed Typing Test
             this.countdownLabel.Visible = false;
 
             this.timer.Tick += new EventHandler(Timer__Tick);
@@ -71,6 +73,8 @@ namespace MyEditor
             this.countdownLabel.Visible = false;
             this.richTextBox.Visible = true;
 
+            letters = this.richTextBox.TextLength;
+
             this.timer.Start();
         }
 
@@ -82,7 +86,8 @@ namespace MyEditor
             {
                 this.timer.Stop();
 
-                string performance = "Congratulation! You typed " + Math.Round(this.richTextBox.TextLength / 30.0, 2)
+                string performance = "Congratulation! You typed " + 
+                    Math.Round((this.richTextBox.TextLength - letters) / 30.0, 2)
                     + " letters per second!";
 
                 MessageBox.Show(performance);
