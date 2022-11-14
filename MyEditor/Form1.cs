@@ -29,7 +29,12 @@ namespace MyEditor
             this.italicsToolStripMenuItem.Click += new EventHandler(ItalicsToolStripMenuItem__Click);
             this.underlineToolStripMenuItem.Click += new EventHandler(UnderlineToolStripMenuItem__Click);
 
+            this.mSSansSerifToolStripMenuItem.Click += new EventHandler(MSSansSerifToolStripMenuItem__Click);
+            this.timesNewRomanToolStripMenuItem.Click += new EventHandler(TimesNewRomanToolStripMenuItem__Click);
+
             this.toolStrip.ItemClicked += new ToolStripItemClickedEventHandler(ToolStrip__ItemClicked);
+
+            this.richTextBox.SelectionChanged += new EventHandler(RichTextBox__SelectionChanged);
 
             this.Text = "My Editor";
         }
@@ -105,17 +110,59 @@ namespace MyEditor
                 selectionFont = richTextBox.Font;
             }
 
-
+            SetSelectionFont(fontStyle, !selectionFont.Bold);
         }
 
         private void ItalicsToolStripMenuItem__Click(object sender, EventArgs e)
         {
+            FontStyle fontStyle = FontStyle.Italic;
+            Font selectionFont = null;
 
+            selectionFont = richTextBox.SelectionFont;
+            if (selectionFont == null)
+            {
+                selectionFont = richTextBox.Font;
+            }
+
+            SetSelectionFont(fontStyle, !selectionFont.Italic);
         }
 
         private void UnderlineToolStripMenuItem__Click(object sender, EventArgs e)
         {
+            FontStyle fontStyle = FontStyle.Underline;
+            Font selectionFont = null;
 
+            selectionFont = richTextBox.SelectionFont;
+            if (selectionFont == null)
+            {
+                selectionFont = richTextBox.Font;
+            }
+
+            SetSelectionFont(fontStyle, !selectionFont.Underline);
+        }
+
+        private void MSSansSerifToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            Font newFont = new Font("MS Sans Serif", richTextBox.SelectionFont.Size, richTextBox.SelectionFont.Style);
+            richTextBox.SelectionFont = newFont;
+        }
+
+        private void TimesNewRomanToolStripMenuItem__Click(object sender, EventArgs e)
+        {
+            Font newFont = new Font("Times New Roman", richTextBox.SelectionFont.Size, richTextBox.SelectionFont.Style);
+            richTextBox.SelectionFont = newFont;
+        }
+
+        private void RichTextBox__SelectionChanged(object sender, EventArgs e)
+        {
+            if (this.richTextBox.SelectionFont != null)
+            {
+                this.boldToolStripButton.Checked = richTextBox.SelectionFont.Bold;
+                this.italicsToolStripButton.Checked = richTextBox.SelectionFont.Italic;
+                this.underlineToolStripButton.Checked = richTextBox.SelectionFont.Underline;
+            }
+
+            this.colorToolStripButton.BackColor = richTextBox.SelectionColor;
         }
 
         private void ToolStrip__ItemClicked(object sender, ToolStripItemClickedEventArgs e)
