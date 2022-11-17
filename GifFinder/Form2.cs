@@ -14,7 +14,7 @@ namespace GifFinder
     {
         public string response;
         public string searchTerm;
-        public int maxItems;
+        public string maxItems;
 
         public SearchForm()
         {
@@ -39,7 +39,7 @@ namespace GifFinder
         {
             this.response = "OK";
             this.searchTerm = searchTermTextBox.Text;
-            this.maxItems = Convert.ToInt32(maxItemsTextBox.Text);
+            this.maxItems = maxItemsTextBox.Text;
 
             this.Hide();
         }
