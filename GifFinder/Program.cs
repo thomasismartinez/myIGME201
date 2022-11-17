@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MyEditor
+namespace GifFinder
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace MyEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyEditorParent());
+            Application.Run(new GifFinder());
         }
     }
 }
