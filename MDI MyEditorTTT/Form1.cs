@@ -43,7 +43,6 @@ namespace MyEditor
 
             this.Text = "My Editor";
 
-            //Part 2: Timed Typing Test
             this.countdownLabel.Visible = false;
 
             this.timer.Tick += new EventHandler(Timer__Tick);
