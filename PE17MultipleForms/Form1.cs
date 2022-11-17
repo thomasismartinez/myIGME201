@@ -16,7 +16,11 @@ namespace PE17MultipleForms
         {
             InitializeComponent();
 
+            // Event handlers
             this.startButton.Click += new EventHandler(StartButton__Click);
+
+            this.lowEndTextBox.KeyPress += new KeyPressEventHandler(TextBox__KeyPress);
+            this.highEndTextBox.KeyPress += new KeyPressEventHandler(TextBox__KeyPress);
         }
 
         private void StartButton__Click(object sender, EventArgs e)
@@ -31,10 +35,14 @@ namespace PE17MultipleForms
             highNumber = Int32.Parse(this.highEndTextBox.Text);
 
             // if not a valid range
-            if ( lowNumber < 1 || highNumber > 100 )
+            if ( ( lowNumber < 1 || lowNumber > 100) || ( highNumber > 100 || highNumber < 1) )
             {
                 // show a dialog that the numbers are not valid
-                MessageBox.Show("The numbers are invalid.");
+                MessageBox.Show("The numbers are invalid.\nRange must be within 1 and 100.");
+            }
+            else if ( lowNumber > highNumber )
+            {
+                MessageBox.Show("The numbers are invalid.\nHigh End must be greater than Low End.");
             }
             else
             {
@@ -49,5 +57,18 @@ namespace PE17MultipleForms
             }
         }
 
+        private void TextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

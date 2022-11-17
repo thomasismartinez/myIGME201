@@ -48,11 +48,10 @@
             // outputLabel
             // 
             this.outputLabel.AutoSize = true;
-            this.outputLabel.Location = new System.Drawing.Point(379, 335);
+            this.outputLabel.Location = new System.Drawing.Point(404, 235);
             this.outputLabel.Name = "outputLabel";
-            this.outputLabel.Size = new System.Drawing.Size(43, 16);
+            this.outputLabel.Size = new System.Drawing.Size(0, 16);
             this.outputLabel.TabIndex = 1;
-            this.outputLabel.Text = "output";
             this.outputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // guessButton
@@ -69,16 +68,18 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 427);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(800, 24);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripProgressBar
             // 
+            this.toolStripProgressBar.Maximum = 45;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 15);
+            this.toolStripProgressBar.Size = new System.Drawing.Size(700, 16);
+            this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // GameForm
             // 
