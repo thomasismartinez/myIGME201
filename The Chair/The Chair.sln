@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The Chair", "The Chair.csproj", "{161F430C-9287-4095-AE58-DE5C93D9D8D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{161F430C-9287-4095-AE58-DE5C93D9D8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161F430C-9287-4095-AE58-DE5C93D9D8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161F430C-9287-4095-AE58-DE5C93D9D8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161F430C-9287-4095-AE58-DE5C93D9D8D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB13E97D-73C4-43D7-8D6E-194AE9E3241B}
+	EndGlobalSection
+EndGlobal
