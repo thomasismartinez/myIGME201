@@ -5,6 +5,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+using Newtonsoft.Json;
+using System.IO;
+using System.Net;
+using System.Web;
+
 namespace TrivaApp
 {
     class TriviaResult
@@ -16,10 +21,10 @@ namespace TrivaApp
         public string correct_answer;
         public List<string> incorrect_answers;
     }
-    class Triva
+    class Trivia
     {
-        public int responce_code;
-        public List<TriviaResult> triviaResults;
+        public int response_code;
+        public List<TriviaResult> results;
 
     }
     /*
@@ -32,6 +37,26 @@ namespace TrivaApp
     {
         static void Main(string[] args)
         {
+            string url = null;
+            string s = null;
+
+            HttpWebRequest request;
+            HttpWebResponse response;
+            StreamReader reader;
+
+            url = "https://opentdb.com/api.php?amount=1&type=multiple";
+
+            request = (HttpWebRequest)WebRequest.Create(url);
+            response = (HttpWebResponse)request.GetResponse();
+            reader = new StreamReader(response.GetResponseStream());
+            s = reader.ReadToEnd();
+            reader.Close();
+
+            Trivia trivia = JsonConvert.DeserializeObject<Trivia>(s);
+            for (int i = 0; i < trivia.results[0].incorrect_answers.Count; ++i)
+            {
+                trivia.results[0].incorrect_answers[i] = HttpUtility.HtmlDecode(trivia.results[0].incorrect_answers[i]);
+            }
         }
     }
 }
