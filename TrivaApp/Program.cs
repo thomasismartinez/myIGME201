@@ -57,6 +57,38 @@ namespace TrivaApp
             {
                 trivia.results[0].incorrect_answers[i] = HttpUtility.HtmlDecode(trivia.results[0].incorrect_answers[i]);
             }
+
+            TriviaResult result = trivia.results[0];
+
+            // play trivia game
+            Console.WriteLine(result.question + "\n");
+
+            Random random = new Random();
+            int correctPos = random.Next(1, 5);
+            int incorrectIndex = 0;
+            for (int i = 1; i <= 4; i++)
+            {
+                if (i == correctPos)
+                {
+                    Console.WriteLine(i + ". " + result.correct_answer); 
+                }
+                else
+                {
+                    Console.WriteLine(i + ". " + result.incorrect_answers[incorrectIndex]);
+                    incorrectIndex++;
+                }
+            }
+
+            string userResponse = Console.ReadLine();
+
+            if ( userResponse == result.correct_answer || userResponse == correctPos.ToString() )
+            {
+                Console.WriteLine("CORRECT");
+            }
+            else
+            {
+                Console.WriteLine("INCORRECT");
+            }
         }
     }
 }
