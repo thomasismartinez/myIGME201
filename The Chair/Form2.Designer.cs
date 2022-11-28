@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.inputLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -44,8 +43,6 @@
             this.button54 = new System.Windows.Forms.Button();
             this.enterButton = new System.Windows.Forms.Button();
             this.questionLabel = new System.Windows.Forms.Label();
-            this.questionTimer = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // inputLabel
@@ -168,7 +165,7 @@
             // 
             // enterButton
             // 
-            this.enterButton.Location = new System.Drawing.Point(25, 365);
+            this.enterButton.Location = new System.Drawing.Point(70, 364);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(75, 23);
             this.enterButton.TabIndex = 13;
@@ -184,22 +181,11 @@
             this.questionLabel.TabIndex = 14;
             this.questionLabel.Text = "question";
             // 
-            // timeLabel
-            // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(134, 368);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(38, 16);
-            this.timeLabel.TabIndex = 15;
-            this.timeLabel.Text = "00:00";
-            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(212, 419);
-            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.questionLabel);
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.button54);
@@ -239,7 +225,5 @@
         private System.Windows.Forms.Button button54;
         private System.Windows.Forms.Button enterButton;
         private System.Windows.Forms.Label questionLabel;
-        private System.Windows.Forms.Timer questionTimer;
-        private System.Windows.Forms.Label timeLabel;
     }
 }

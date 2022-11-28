@@ -35,6 +35,7 @@
             this.feedingGroupBox = new System.Windows.Forms.GroupBox();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.feedChairButton = new System.Windows.Forms.Button();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -43,14 +44,12 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.feedChairButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.gluppCheckBox = new System.Windows.Forms.CheckBox();
             this.elapsedTimer = new System.Windows.Forms.Timer(this.components);
             this.sitChairButton = new System.Windows.Forms.Button();
             this.petChairButton = new System.Windows.Forms.Button();
-            this.smashChairButton = new System.Windows.Forms.Button();
             this.strikeChairButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.feedingGroupBox.SuspendLayout();
@@ -117,6 +116,15 @@
             this.radioButton12.TabStop = true;
             this.radioButton12.Text = "radioButton12";
             this.radioButton12.UseVisualStyleBackColor = true;
+            // 
+            // feedChairButton
+            // 
+            this.feedChairButton.Location = new System.Drawing.Point(6, 305);
+            this.feedChairButton.Name = "feedChairButton";
+            this.feedChairButton.Size = new System.Drawing.Size(128, 49);
+            this.feedChairButton.TabIndex = 7;
+            this.feedChairButton.Text = "Feed the Chair";
+            this.feedChairButton.UseVisualStyleBackColor = true;
             // 
             // radioButton8
             // 
@@ -206,15 +214,6 @@
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // feedChairButton
-            // 
-            this.feedChairButton.Location = new System.Drawing.Point(6, 305);
-            this.feedChairButton.Name = "feedChairButton";
-            this.feedChairButton.Size = new System.Drawing.Size(128, 49);
-            this.feedChairButton.TabIndex = 7;
-            this.feedChairButton.Text = "Feed the Chair";
-            this.feedChairButton.UseVisualStyleBackColor = true;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -263,15 +262,6 @@
             this.petChairButton.Text = "Stroke the Chair";
             this.petChairButton.UseVisualStyleBackColor = true;
             // 
-            // smashChairButton
-            // 
-            this.smashChairButton.Location = new System.Drawing.Point(801, 431);
-            this.smashChairButton.Name = "smashChairButton";
-            this.smashChairButton.Size = new System.Drawing.Size(128, 49);
-            this.smashChairButton.TabIndex = 11;
-            this.smashChairButton.Text = "Smash the Chair";
-            this.smashChairButton.UseVisualStyleBackColor = true;
-            // 
             // strikeChairButton
             // 
             this.strikeChairButton.Location = new System.Drawing.Point(801, 90);
@@ -287,7 +277,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 525);
             this.Controls.Add(this.strikeChairButton);
-            this.Controls.Add(this.smashChairButton);
             this.Controls.Add(this.petChairButton);
             this.Controls.Add(this.gluppCheckBox);
             this.Controls.Add(this.sitChairButton);
@@ -328,7 +317,6 @@
         private System.Windows.Forms.Timer elapsedTimer;
         private System.Windows.Forms.Button sitChairButton;
         private System.Windows.Forms.Button petChairButton;
-        private System.Windows.Forms.Button smashChairButton;
         private System.Windows.Forms.Button strikeChairButton;
     }
 }
