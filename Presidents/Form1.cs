@@ -46,18 +46,18 @@ namespace Presidents
         {
             InitializeComponent();
 
-            // list of president radio buttons
+            // Add all of the president radio buttons to presidentButtons
             foreach (Control control in this.Controls)
             {
                 try { presidentButtons.Add((RadioButton)control); } catch { }
             }
-            // list of president text boxes
+            // Add all of the president text boxes to presidentNumBoxes
             foreach (Control control in this.Controls)
             {
                 try { presidentNumBoxes.Add((TextBox)control); } catch { }
             }
 
-            // president radio buttons
+            // Add PresRadioButton__CheckedChanged eventhandler to all President radio buttons
             this.bhRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
             this.fdrRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
             this.wjcRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
@@ -75,7 +75,7 @@ namespace Presidents
             this.trRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
             this.tjRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
 
-            // president text box key presses
+            // Add PresTextBox__KeyPress keypresseventhandler to all President text boxes
             this.bhTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
             this.fdrTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
             this.wjcTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
@@ -93,7 +93,7 @@ namespace Presidents
             this.trTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
             this.tjTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
 
-            // president text box leave
+            // Add PresTextBox__Validating canceleventhandler to all President text boxes
             this.bhTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
             this.fdrTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
             this.wjcTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
@@ -111,34 +111,37 @@ namespace Presidents
             this.trTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
             this.tjTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
 
-            //filter buttons
+            // Add FilterRadioButton__CheckChanged to all radio buttons in Filter Group Box
             this.allRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckChanged);
             this.dRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckChanged);
             this.rRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckChanged);
             this.drRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckChanged);
             this.fRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckChanged);
 
-            // picture box
+            // Add PortraitPictureBox__MouseEnter eventhandler to Portrait Picture Box
             this.portraitPictureBox.MouseEnter += new EventHandler(PortraitPictureBox__MouseEnter);
+            // Add PortraitPictureBox__MouseLeave eventhandler to Portrait Picture Box
             this.portraitPictureBox.MouseLeave += new EventHandler(PortraitPictureBox__MouseLeave);
 
-            // exit button
+            // Disable Exit Button
             this.exitButton.Enabled = false;
+            // Add ExitButton__Click eventhandler to Exit Button
             this.exitButton.Click += new EventHandler(ExitButton__Click);
 
-            // timer 
+            // Set Tool Strip Progress Bar value to full 
             this.toolStripProgressBar.Value = 240;
+            // Add Timer__Tick eventhandler to Timer
             this.timer.Tick += new EventHandler(Timer__Tick);
         }
 
-        // president radio buttons
+        // president radio buttons Check Changed Event
         private void PresRadioButton__CheckedChanged(object sender, EventArgs e)
         {
             RadioButton presidentButton = (RadioButton)sender;
-            // check if this is the active president button
+            // if this is the active president button
             if (presidentButton.Checked)
             {
-                // re-format names for browsing
+                // re-format names from radio buttons for browsing
                 StringBuilder wikiNameBuilder = new StringBuilder();
                 StringBuilder imgNameBuilder = new StringBuilder();
                 foreach (Char c in presidentButton.Text)
@@ -157,8 +160,9 @@ namespace Presidents
                 String imgName = imgNameBuilder.ToString();
                 String imgExt = ".jpeg";
 
-                // set portrait to new President
+                // If Obama -> extension is ".png"
                 if (imgName.Equals("BarackObama")) { imgExt = ".png"; }
+                // set portrait to new President
                 this.portraitPictureBox.ImageLocation = "http://people.rit.edu/dxsigm/" + imgName + imgExt;
 
                 // set web browser to president
@@ -170,7 +174,7 @@ namespace Presidents
         // president text boxes
         private void PresTextBox__KeyPress(object sender, KeyPressEventArgs e)
         {
-            // handle none digit/backspace keypresses
+            // dont handle non-digit/backspace keypresses
             if (Char.IsDigit(e.KeyChar) || e.KeyChar == '\b') 
             {
                 e.Handled = false;
@@ -179,10 +183,10 @@ namespace Presidents
                 if (!gamestart)
                 {
                     gamestart = true;
+                    // Start Timer
                     timer.Start();
                 }
             }
-            // else dont input character
             else
             {
                 e.Handled = true;
@@ -196,19 +200,28 @@ namespace Presidents
             string givenAnswer = tb.Text;
             string correctAnswer = correctAnswers[tb.Name];
 
+            // If answer in the given Text Box is not the same as the correct answer
             if (givenAnswer != correctAnswer)
             {
+                // Give and error
                 this.errorProvider.SetError(tb, "Incorrect #");
+                // Cancel the event
                 e.Cancel = true;
+                // Set given text box’s tag to false (wrong)
                 tb.Tag = false;
             }
+            // if they are the same
             else
             {
+                // Give no error
                 this.errorProvider.SetError(tb, null);
+                // Dont cancel the event
                 e.Cancel = false;
+                // Set given text box’s tag to true (correcy)
                 tb.Tag = true;
             }
 
+            // Check if all answers are correct
             ValidateAll();
         }
 
@@ -217,22 +230,23 @@ namespace Presidents
         {
             RadioButton filterButton = (RadioButton)sender;
 
-            // check if this radio button is selected
+            // if this radio button is selected
             if (filterButton.Checked)
             {
-                // compare this button's text to the tag of each president radio button
                 String party = filterButton.Text;
 
+                // iterate through presidentButtons
                 foreach (RadioButton presidentRadioButton in presidentButtons)
                 {
+                    // compare this button's text to the tag of each president radio button
                     if (presidentRadioButton.Tag.ToString() == party || party == "All")
                     {
-                        // show correct party 
+                        // show buttons of correct party 
                         presidentRadioButton.Visible = true;
                     }
                     else
                     {
-                        // hide incorrect party
+                        // hide buttons of incorrect party
                         presidentRadioButton.Visible = false;
                     }
                 }
@@ -245,33 +259,38 @@ namespace Presidents
         //     increase its size until it is no longer being hovered over
         private void PortraitPictureBox__MouseEnter(object sender, EventArgs e)
         {
+            // increase picture box size
             portraitPictureBox.Size = new Size(300, 300);
         }
         private void PortraitPictureBox__MouseLeave(object sender, EventArgs e)
         {
+            // return picture box size to normal
             portraitPictureBox.Size = new Size(170, 240);
         }
 
-        // exit button
+        // exit button click event
         private void ExitButton__Click(object sender, EventArgs e)
         {
             // close application
             Application.Exit();
         }
 
-        // timer every tick
+        // Timer tick event
         private void Timer__Tick(object sender, EventArgs e)
         {
-            // decrease progress bar
+            // Decrease progress bar by 1
             this.toolStripProgressBar.Value--;
 
+            // If Tool Strip Progress Bar Reaches 0
             if (toolStripProgressBar.Value == 0)
             {
-                // reset game
+                // Stop Timer
                 this.timer.Stop();
+                // Reset Progress Bar
                 this.toolStripProgressBar.Value = 240;
+                // Set gamestart to false
                 gamestart = false;
-
+                // Set all President Text Boxes back to 0
                 foreach (TextBox numBox in presidentNumBoxes)
                 {
                     numBox.Text = "0";
@@ -282,22 +301,25 @@ namespace Presidents
         // check if game won
         private void ValidateAll()
         {
+            // iterate each President Text Box and count correct answers using Tags
             int x = 0;
             foreach (TextBox numBox in presidentNumBoxes)
             {
-                if (numBox.Text == correctAnswers[numBox.Name])
+                if ((bool)numBox.Tag)
                 {
                     x++;
                 }
             }
 
+            // if score reaches 16 (all presidents are correct)
             if (x == 16)
             {
-                // stop game
+                // stop timer
                 this.timer.Stop();
 
-                // navigate to victory video
+                // Web Browser Box displays link
                 this.webGroupBox.Text = "https://www.youtube.com/watch?v=18212B4yfLg";
+                // Web Browser opens fireworks youtube video
                 this.webBrowser.Navigate("https://www.youtube.com/watch?v=18212B4yfLg");
 
                 // enable exit button
