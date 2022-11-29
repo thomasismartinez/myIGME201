@@ -58,22 +58,22 @@ namespace Presidents
             }
 
             // president radio buttons
-            this.bhRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.fdrRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.wjcRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.jbRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.fpRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.gwbRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.boRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.jfkRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.wmkRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.rrRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.ddeRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.mvbRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.gwRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.jaRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.trRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
-            this.tjRadioButton.CheckedChanged += new EventHandler(PresRadioButton__Check);
+            this.bhRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.fdrRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.wjcRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.jbRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.fpRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.gwbRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.boRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.jfkRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.wmkRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.rrRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.ddeRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.mvbRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.gwRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.jaRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.trRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
+            this.tjRadioButton.CheckedChanged += new EventHandler(PresRadioButton__CheckedChanged);
 
             // president text box key presses
             this.bhTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
@@ -132,7 +132,7 @@ namespace Presidents
         }
 
         // president radio buttons
-        private void PresRadioButton__Check(object sender, EventArgs e)
+        private void PresRadioButton__CheckedChanged(object sender, EventArgs e)
         {
             RadioButton presidentButton = (RadioButton)sender;
             // check if this is the active president button
