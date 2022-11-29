@@ -502,7 +502,7 @@
             this.webBrowser.ScriptErrorsSuppressed = true;
             this.webBrowser.Size = new System.Drawing.Size(647, 568);
             this.webBrowser.TabIndex = 0;
-            this.webBrowser.Url = new System.Uri("https://en.m.wikipedia.org/wiki/Benjamin_Harrison", System.UriKind.Absolute);
+            this.webBrowser.Url = new System.Uri("https://www.youtube.com/watch?v=18212B4yfLg", System.UriKind.Absolute);
             // 
             // exitButton
             // 

@@ -94,22 +94,22 @@ namespace Presidents
             this.tjTextBox.KeyPress += new KeyPressEventHandler(PresTextBox__KeyPress);
 
             // president text box leave
-            this.bhTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.fdrTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.wjcTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.jbTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.fpTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.gwbTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.boTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.jfkTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.wmkTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.rrTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.ddeTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.mvbTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.gwTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.jaTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.trTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
-            this.tjTextBox.Validating += new CancelEventHandler(PreTextBox__Validating);
+            this.bhTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.fdrTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.wjcTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.jbTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.fpTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.gwbTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.boTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.jfkTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.wmkTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.rrTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.ddeTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.mvbTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.gwTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.jaTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.trTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
+            this.tjTextBox.Validating += new CancelEventHandler(PresTextBox__Validating);
 
             //filter buttons
             this.allRadioButton.CheckedChanged += new EventHandler(FilterRadioButton__CheckChanged);
@@ -189,7 +189,7 @@ namespace Presidents
             }
         }
 
-        private void PreTextBox__Validating(object sender, CancelEventArgs e)
+        private void PresTextBox__Validating(object sender, CancelEventArgs e)
         {
             TextBox tb = (TextBox)sender;
 
@@ -297,8 +297,8 @@ namespace Presidents
                 this.timer.Stop();
 
                 // navigate to victory video
-                this.webGroupBox.Text = "https://www.youtube.com/watch?v=cWqNcXyH-s0";
-                this.webBrowser.Navigate("https://www.youtube.com/watch?v=cWqNcXyH-s0");
+                this.webGroupBox.Text = "https://www.youtube.com/watch?v=18212B4yfLg";
+                this.webBrowser.Navigate("https://www.youtube.com/watch?v=18212B4yfLg");
 
                 // enable exit button
                 this.exitButton.Enabled = true;
