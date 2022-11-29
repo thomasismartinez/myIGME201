@@ -17,7 +17,7 @@ namespace Presidents
     /// Author: Thomas Martinez
     /// Purpose: President order guessing game and wikipedia browser
     /// </summary>
-    public partial class Form1 : Form
+    public partial class PresidentsForm : Form
     {
         private List<RadioButton> presidentButtons = new List<RadioButton>();
         private List<TextBox> presidentNumBoxes = new List<TextBox>();
@@ -42,7 +42,7 @@ namespace Presidents
         };
         bool gamestart = false;
 
-        public Form1()
+        public PresidentsForm()
         {
             InitializeComponent();
 

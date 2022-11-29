@@ -1,6 +1,6 @@
 ﻿namespace Presidents
 {
-    partial class Form1
+    partial class PresidentsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PresidentsForm));
             this.bhRadioButton = new System.Windows.Forms.RadioButton();
             this.bhTextBox = new System.Windows.Forms.TextBox();
             this.fdrRadioButton = new System.Windows.Forms.RadioButton();
@@ -545,7 +545,7 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // Form1
+            // PresidentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -588,7 +588,7 @@
             this.Controls.Add(this.fdrRadioButton);
             this.Controls.Add(this.bhTextBox);
             this.Controls.Add(this.bhRadioButton);
-            this.Name = "Form1";
+            this.Name = "PresidentsForm";
             this.Text = "Presidents";
             this.toolTip.SetToolTip(this, "Which # President?");
             this.filterGroupBox.ResumeLayout(false);
