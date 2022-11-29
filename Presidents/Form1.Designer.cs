@@ -103,6 +103,7 @@
             this.bhTextBox.Name = "bhTextBox";
             this.bhTextBox.Size = new System.Drawing.Size(39, 22);
             this.bhTextBox.TabIndex = 1;
+            this.bhTextBox.Tag = "false";
             this.bhTextBox.Text = "0";
             this.toolTip.SetToolTip(this.bhTextBox, "Which # President?");
             // 
@@ -189,6 +190,7 @@
             this.fdrTextBox.Name = "fdrTextBox";
             this.fdrTextBox.Size = new System.Drawing.Size(39, 22);
             this.fdrTextBox.TabIndex = 3;
+            this.fdrTextBox.Tag = "false";
             this.fdrTextBox.Text = "0";
             this.toolTip.SetToolTip(this.fdrTextBox, "Which # President?");
             // 
@@ -198,6 +200,7 @@
             this.wjcTextBox.Name = "wjcTextBox";
             this.wjcTextBox.Size = new System.Drawing.Size(39, 22);
             this.wjcTextBox.TabIndex = 5;
+            this.wjcTextBox.Tag = "false";
             this.wjcTextBox.Text = "0";
             this.toolTip.SetToolTip(this.wjcTextBox, "Which # President?");
             // 
@@ -207,6 +210,7 @@
             this.jbTextBox.Name = "jbTextBox";
             this.jbTextBox.Size = new System.Drawing.Size(39, 22);
             this.jbTextBox.TabIndex = 7;
+            this.jbTextBox.Tag = "false";
             this.jbTextBox.Text = "0";
             this.toolTip.SetToolTip(this.jbTextBox, "Which # President?");
             // 
@@ -216,6 +220,7 @@
             this.fpTextBox.Name = "fpTextBox";
             this.fpTextBox.Size = new System.Drawing.Size(39, 22);
             this.fpTextBox.TabIndex = 9;
+            this.fpTextBox.Tag = "false";
             this.fpTextBox.Text = "0";
             this.toolTip.SetToolTip(this.fpTextBox, "Which # President?");
             // 
@@ -225,6 +230,7 @@
             this.gwbTextBox.Name = "gwbTextBox";
             this.gwbTextBox.Size = new System.Drawing.Size(39, 22);
             this.gwbTextBox.TabIndex = 11;
+            this.gwbTextBox.Tag = "false";
             this.gwbTextBox.Text = "0";
             this.toolTip.SetToolTip(this.gwbTextBox, "Which # President?");
             // 
@@ -234,6 +240,7 @@
             this.boTextBox.Name = "boTextBox";
             this.boTextBox.Size = new System.Drawing.Size(39, 22);
             this.boTextBox.TabIndex = 13;
+            this.boTextBox.Tag = "false";
             this.boTextBox.Text = "0";
             this.toolTip.SetToolTip(this.boTextBox, "Which # President?");
             // 
@@ -243,6 +250,7 @@
             this.jfkTextBox.Name = "jfkTextBox";
             this.jfkTextBox.Size = new System.Drawing.Size(39, 22);
             this.jfkTextBox.TabIndex = 15;
+            this.jfkTextBox.Tag = "false";
             this.jfkTextBox.Text = "0";
             this.toolTip.SetToolTip(this.jfkTextBox, "Which # President?");
             // 
@@ -252,6 +260,7 @@
             this.tjTextBox.Name = "tjTextBox";
             this.tjTextBox.Size = new System.Drawing.Size(39, 22);
             this.tjTextBox.TabIndex = 31;
+            this.tjTextBox.Tag = "false";
             this.tjTextBox.Text = "0";
             this.toolTip.SetToolTip(this.tjTextBox, "Which # President?");
             // 
@@ -272,6 +281,7 @@
             this.trTextBox.Name = "trTextBox";
             this.trTextBox.Size = new System.Drawing.Size(39, 22);
             this.trTextBox.TabIndex = 29;
+            this.trTextBox.Tag = "false";
             this.trTextBox.Text = "0";
             this.toolTip.SetToolTip(this.trTextBox, "Which # President?");
             // 
@@ -292,6 +302,7 @@
             this.jaTextBox.Name = "jaTextBox";
             this.jaTextBox.Size = new System.Drawing.Size(39, 22);
             this.jaTextBox.TabIndex = 27;
+            this.jaTextBox.Tag = "false";
             this.jaTextBox.Text = "0";
             this.toolTip.SetToolTip(this.jaTextBox, "Which # President?");
             // 
@@ -312,6 +323,7 @@
             this.gwTextBox.Name = "gwTextBox";
             this.gwTextBox.Size = new System.Drawing.Size(39, 22);
             this.gwTextBox.TabIndex = 25;
+            this.gwTextBox.Tag = "false";
             this.gwTextBox.Text = "0";
             this.toolTip.SetToolTip(this.gwTextBox, "Which # President?");
             // 
@@ -332,6 +344,7 @@
             this.mvbTextBox.Name = "mvbTextBox";
             this.mvbTextBox.Size = new System.Drawing.Size(39, 22);
             this.mvbTextBox.TabIndex = 23;
+            this.mvbTextBox.Tag = "false";
             this.mvbTextBox.Text = "0";
             this.toolTip.SetToolTip(this.mvbTextBox, "Which # President?");
             // 
@@ -352,6 +365,7 @@
             this.ddeTextBox.Name = "ddeTextBox";
             this.ddeTextBox.Size = new System.Drawing.Size(39, 22);
             this.ddeTextBox.TabIndex = 21;
+            this.ddeTextBox.Tag = "false";
             this.ddeTextBox.Text = "0";
             this.toolTip.SetToolTip(this.ddeTextBox, "Which # President?");
             // 
@@ -372,6 +386,7 @@
             this.rrTextBox.Name = "rrTextBox";
             this.rrTextBox.Size = new System.Drawing.Size(39, 22);
             this.rrTextBox.TabIndex = 19;
+            this.rrTextBox.Tag = "false";
             this.rrTextBox.Text = "0";
             this.toolTip.SetToolTip(this.rrTextBox, "Which # President?");
             // 
@@ -392,6 +407,7 @@
             this.wmkTextBox.Name = "wmkTextBox";
             this.wmkTextBox.Size = new System.Drawing.Size(39, 22);
             this.wmkTextBox.TabIndex = 17;
+            this.wmkTextBox.Tag = "false";
             this.wmkTextBox.Text = "0";
             this.toolTip.SetToolTip(this.wmkTextBox, "Which # President?");
             // 
@@ -589,6 +605,7 @@
             this.Controls.Add(this.bhTextBox);
             this.Controls.Add(this.bhRadioButton);
             this.Name = "PresidentsForm";
+            this.Tag = "false";
             this.Text = "Presidents";
             this.toolTip.SetToolTip(this, "Which # President?");
             this.filterGroupBox.ResumeLayout(false);

@@ -15,7 +15,7 @@ namespace Presidents
     /// <summary>
     /// Program: President.cs
     /// Author: Thomas Martinez
-    /// Purpose: President order guessing game and wikipedia browser
+    /// Purpose: Presidents order guessing game and wikipedia browser
     /// </summary>
     public partial class PresidentsForm : Form
     {
@@ -45,6 +45,25 @@ namespace Presidents
         public PresidentsForm()
         {
             InitializeComponent();
+
+            // Enable Internet Explorer v12
+            try
+            {
+                // Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; WOW64; Trident /
+                //7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; wbx
+                //1.0.0)
+Microsoft.Win32.RegistryKey key =
+Microsoft.Win32.Registry.LocalMachine.OpenSubKey(
+@"SOFTWARE\\WOW6432Node\\Microsoft\\Internet Explorer\\MAIN\\
+FeatureControl\\FEATURE_BROWSER_EMULATION",
+true);
+                key.SetValue(Application.ExecutablePath.Replace(Application.StartupPath + "\\", ""), 12001,
+                Microsoft.Win32.RegistryValueKind.DWord);
+                key.Close();
+            }
+            catch
+            {
+            }
 
             // Add all of the president radio buttons to presidentButtons
             foreach (Control control in this.Controls)
@@ -301,17 +320,18 @@ namespace Presidents
         // check if game won
         private void ValidateAll()
         {
-            // iterate each President Text Box and count correct answers using Tags
+            // iterate each President Text Box and count correct answers
             int x = 0;
-            foreach (TextBox numBox in presidentNumBoxes)
+            foreach (TextBox numBox in this.presidentNumBoxes)
             {
-                if ((bool)numBox.Tag)
+                // count correct answers
+                if (numBox.Text == this.correctAnswers[numBox.Name])
                 {
                     x++;
                 }
             }
 
-            // if score reaches 16 (all presidents are correct)
+            // if there are 16 correct answers (all text boxes are correct)
             if (x == 16)
             {
                 // stop timer
