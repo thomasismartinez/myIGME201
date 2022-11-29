@@ -39,7 +39,7 @@
             this.boRadioButton = new System.Windows.Forms.RadioButton();
             this.gwbRadioButton = new System.Windows.Forms.RadioButton();
             this.fpRadioButton = new System.Windows.Forms.RadioButton();
-            this.fdrTextBox1 = new System.Windows.Forms.TextBox();
+            this.fdrTextBox = new System.Windows.Forms.TextBox();
             this.wjcTextBox = new System.Windows.Forms.TextBox();
             this.jbTextBox = new System.Windows.Forms.TextBox();
             this.fpTextBox = new System.Windows.Forms.TextBox();
@@ -75,10 +75,13 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.filterGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portraitPictureBox)).BeginInit();
             this.webGroupBox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // bhRadioButton
@@ -101,6 +104,7 @@
             this.bhTextBox.Size = new System.Drawing.Size(39, 22);
             this.bhTextBox.TabIndex = 1;
             this.bhTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.bhTextBox, "Which # President?");
             // 
             // fdrRadioButton
             // 
@@ -151,10 +155,10 @@
             this.boRadioButton.AutoSize = true;
             this.boRadioButton.Location = new System.Drawing.Point(12, 168);
             this.boRadioButton.Name = "boRadioButton";
-            this.boRadioButton.Size = new System.Drawing.Size(123, 20);
+            this.boRadioButton.Size = new System.Drawing.Size(119, 20);
             this.boRadioButton.TabIndex = 12;
             this.boRadioButton.Tag = "Democrat";
-            this.boRadioButton.Text = "Barrack Obama";
+            this.boRadioButton.Text = "Barack Obama";
             this.boRadioButton.UseVisualStyleBackColor = true;
             // 
             // gwbRadioButton
@@ -179,13 +183,14 @@
             this.fpRadioButton.Text = "Franklin Pierce";
             this.fpRadioButton.UseVisualStyleBackColor = true;
             // 
-            // fdrTextBox1
+            // fdrTextBox
             // 
-            this.fdrTextBox1.Location = new System.Drawing.Point(175, 38);
-            this.fdrTextBox1.Name = "fdrTextBox1";
-            this.fdrTextBox1.Size = new System.Drawing.Size(39, 22);
-            this.fdrTextBox1.TabIndex = 3;
-            this.fdrTextBox1.Text = "0";
+            this.fdrTextBox.Location = new System.Drawing.Point(175, 38);
+            this.fdrTextBox.Name = "fdrTextBox";
+            this.fdrTextBox.Size = new System.Drawing.Size(39, 22);
+            this.fdrTextBox.TabIndex = 3;
+            this.fdrTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.fdrTextBox, "Which # President?");
             // 
             // wjcTextBox
             // 
@@ -194,6 +199,7 @@
             this.wjcTextBox.Size = new System.Drawing.Size(39, 22);
             this.wjcTextBox.TabIndex = 5;
             this.wjcTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.wjcTextBox, "Which # President?");
             // 
             // jbTextBox
             // 
@@ -202,6 +208,7 @@
             this.jbTextBox.Size = new System.Drawing.Size(39, 22);
             this.jbTextBox.TabIndex = 7;
             this.jbTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.jbTextBox, "Which # President?");
             // 
             // fpTextBox
             // 
@@ -210,6 +217,7 @@
             this.fpTextBox.Size = new System.Drawing.Size(39, 22);
             this.fpTextBox.TabIndex = 9;
             this.fpTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.fpTextBox, "Which # President?");
             // 
             // gwbTextBox
             // 
@@ -218,6 +226,7 @@
             this.gwbTextBox.Size = new System.Drawing.Size(39, 22);
             this.gwbTextBox.TabIndex = 11;
             this.gwbTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.gwbTextBox, "Which # President?");
             // 
             // boTextBox
             // 
@@ -226,6 +235,7 @@
             this.boTextBox.Size = new System.Drawing.Size(39, 22);
             this.boTextBox.TabIndex = 13;
             this.boTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.boTextBox, "Which # President?");
             // 
             // jfkTextBox
             // 
@@ -234,6 +244,7 @@
             this.jfkTextBox.Size = new System.Drawing.Size(39, 22);
             this.jfkTextBox.TabIndex = 15;
             this.jfkTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.jfkTextBox, "Which # President?");
             // 
             // tjTextBox
             // 
@@ -242,6 +253,7 @@
             this.tjTextBox.Size = new System.Drawing.Size(39, 22);
             this.tjTextBox.TabIndex = 31;
             this.tjTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.tjTextBox, "Which # President?");
             // 
             // tjRadioButton
             // 
@@ -261,6 +273,7 @@
             this.trTextBox.Size = new System.Drawing.Size(39, 22);
             this.trTextBox.TabIndex = 29;
             this.trTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.trTextBox, "Which # President?");
             // 
             // trRadioButton
             // 
@@ -280,6 +293,7 @@
             this.jaTextBox.Size = new System.Drawing.Size(39, 22);
             this.jaTextBox.TabIndex = 27;
             this.jaTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.jaTextBox, "Which # President?");
             // 
             // jaRadioButton
             // 
@@ -299,6 +313,7 @@
             this.gwTextBox.Size = new System.Drawing.Size(39, 22);
             this.gwTextBox.TabIndex = 25;
             this.gwTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.gwTextBox, "Which # President?");
             // 
             // gwRadioButton
             // 
@@ -318,6 +333,7 @@
             this.mvbTextBox.Size = new System.Drawing.Size(39, 22);
             this.mvbTextBox.TabIndex = 23;
             this.mvbTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.mvbTextBox, "Which # President?");
             // 
             // mvbRadioButton
             // 
@@ -337,6 +353,7 @@
             this.ddeTextBox.Size = new System.Drawing.Size(39, 22);
             this.ddeTextBox.TabIndex = 21;
             this.ddeTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.ddeTextBox, "Which # President?");
             // 
             // ddeRadioButton
             // 
@@ -356,6 +373,7 @@
             this.rrTextBox.Size = new System.Drawing.Size(39, 22);
             this.rrTextBox.TabIndex = 19;
             this.rrTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.rrTextBox, "Which # President?");
             // 
             // rrRadioButton
             // 
@@ -375,6 +393,7 @@
             this.wmkTextBox.Size = new System.Drawing.Size(39, 22);
             this.wmkTextBox.TabIndex = 17;
             this.wmkTextBox.Text = "0";
+            this.toolTip.SetToolTip(this.wmkTextBox, "Which # President?");
             // 
             // wmkRadioButton
             // 
@@ -406,9 +425,9 @@
             this.fRadioButton.AutoSize = true;
             this.fRadioButton.Location = new System.Drawing.Point(6, 139);
             this.fRadioButton.Name = "fRadioButton";
-            this.fRadioButton.Size = new System.Drawing.Size(83, 20);
+            this.fRadioButton.Size = new System.Drawing.Size(88, 20);
             this.fRadioButton.TabIndex = 4;
-            this.fRadioButton.Text = "federalist";
+            this.fRadioButton.Text = "Federalist";
             this.fRadioButton.UseVisualStyleBackColor = true;
             // 
             // drRadioButton
@@ -459,7 +478,7 @@
             this.portraitPictureBox.InitialImage = null;
             this.portraitPictureBox.Location = new System.Drawing.Point(12, 242);
             this.portraitPictureBox.Name = "portraitPictureBox";
-            this.portraitPictureBox.Size = new System.Drawing.Size(224, 240);
+            this.portraitPictureBox.Size = new System.Drawing.Size(170, 240);
             this.portraitPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.portraitPictureBox.TabIndex = 33;
             this.portraitPictureBox.TabStop = false;
@@ -469,7 +488,7 @@
             this.webGroupBox.Controls.Add(this.webBrowser);
             this.webGroupBox.Location = new System.Drawing.Point(452, 13);
             this.webGroupBox.Name = "webGroupBox";
-            this.webGroupBox.Size = new System.Drawing.Size(613, 589);
+            this.webGroupBox.Size = new System.Drawing.Size(653, 589);
             this.webGroupBox.TabIndex = 34;
             this.webGroupBox.TabStop = false;
             this.webGroupBox.Text = "https://en.m.wikipedia.org/wiki/Benjamin_Harrison";
@@ -481,13 +500,13 @@
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.ScriptErrorsSuppressed = true;
-            this.webBrowser.Size = new System.Drawing.Size(607, 568);
+            this.webBrowser.Size = new System.Drawing.Size(647, 568);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("https://en.m.wikipedia.org/wiki/Benjamin_Harrison", System.UriKind.Absolute);
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(977, 608);
+            this.exitButton.Location = new System.Drawing.Point(1017, 608);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(88, 31);
             this.exitButton.TabIndex = 35;
@@ -499,26 +518,38 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1071, 23);
+            this.statusStrip1.Size = new System.Drawing.Size(1154, 24);
             this.statusStrip1.TabIndex = 36;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripProgressBar
             // 
+            this.toolStripProgressBar.Maximum = 240;
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 15);
+            this.toolStripProgressBar.Size = new System.Drawing.Size(800, 16);
             // 
             // timer
             // 
-            this.timer.Interval = 1000;
+            this.timer.Interval = 500;
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 5000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.IsBalloon = true;
+            this.toolTip.ReshowDelay = 100;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 662);
+            this.ClientSize = new System.Drawing.Size(1154, 674);
             this.ControlBox = false;
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.exitButton);
@@ -553,18 +584,20 @@
             this.Controls.Add(this.jbRadioButton);
             this.Controls.Add(this.wjcTextBox);
             this.Controls.Add(this.wjcRadioButton);
-            this.Controls.Add(this.fdrTextBox1);
+            this.Controls.Add(this.fdrTextBox);
             this.Controls.Add(this.fdrRadioButton);
             this.Controls.Add(this.bhTextBox);
             this.Controls.Add(this.bhRadioButton);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Presidents";
+            this.toolTip.SetToolTip(this, "Which # President?");
             this.filterGroupBox.ResumeLayout(false);
             this.filterGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portraitPictureBox)).EndInit();
             this.webGroupBox.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,7 +614,7 @@
         private System.Windows.Forms.RadioButton boRadioButton;
         private System.Windows.Forms.RadioButton gwbRadioButton;
         private System.Windows.Forms.RadioButton fpRadioButton;
-        private System.Windows.Forms.TextBox fdrTextBox1;
+        private System.Windows.Forms.TextBox fdrTextBox;
         private System.Windows.Forms.TextBox wjcTextBox;
         private System.Windows.Forms.TextBox jbTextBox;
         private System.Windows.Forms.TextBox fpTextBox;
@@ -617,6 +650,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
 
