@@ -16,6 +16,7 @@ namespace The_Chair
     public partial class ChairForm : Form
     {
         Random random = new Random();
+        private CubeForm cubeForm;
         private SmashForm smashForm;
         private int[] foodAmounts = new int[] { 0,1,1,1,1,1,1,1,1,1,0,0,1 };
         private List<Label> radioButtonCounters = new List<Label>();
@@ -30,6 +31,8 @@ namespace The_Chair
         private int sitTime = 100;
         private int shopTime = 0;
         private int angryTime = 0;
+        public int cubeTime = 20;
+        private bool cubeAppeared = false;
         private int feedCriteria;
         private int gluppMultiplier = 1;
         public ChairForm()
@@ -102,7 +105,7 @@ namespace The_Chair
             {
                 if (rb.Checked)
                 {
-                    AttamptFeed(Int32.Parse(rb.Text.Substring(11)));
+                    AttemptFeed(Int32.Parse(rb.Text.Substring(11)));
                 }
             }
         }
@@ -140,8 +143,16 @@ namespace The_Chair
         {
             this.sitChairButton.Enabled = false;
             sitTime = 100;
-            int chance = random.Next(0, 10000);
-            if (chance < happinessToolStripProgressBar.Value)
+            int chance = random.Next(0, 100);
+            if (happinessToolStripProgressBar.Value < 10000 && chance > 95)
+            {
+                IncreaseHappiness(3000);
+            }
+            else if (happinessToolStripProgressBar.Value < 6666 && chance > 75)
+            {
+                IncreaseHappiness(3000);
+            }
+            else if (happinessToolStripProgressBar.Value < 3333 && chance > 50)
             {
                 IncreaseHappiness(3000);
             }
@@ -164,6 +175,7 @@ namespace The_Chair
                 b1.Location = new Point(b2.Location.X, b2.Location.Y);
                 b2.Location = posOne;
 
+                // Randomely capitalize a random radio button
                 int randRad = random.Next(0, radioButtons.Count);
                 radioButtons[randRad].Text = Program.randCap(radioButtons[randRad].Text);
             }
@@ -193,9 +205,6 @@ namespace The_Chair
 
         private void Timer__Tick(object sender, EventArgs e)
         {
-            this.sitTime--;
-            this.shopTime--;
-
             if (hungerTime > 1)
             {
                 hungerTime--;
@@ -218,20 +227,49 @@ namespace The_Chair
             }
             else if (angryTime == 1)
             {
+                angryTime--;
                 this.angryPictureBox.Visible = false;
             }
 
-            if (angryTime > 1)
+            if (sitTime > 1)
             {
                 sitTime--;
             }
             else if (sitTime == 1)
             {
+                sitTime--;
                 this.sitChairButton.Enabled = true;
+            }
+
+            if (shopTime > 1)
+            {
+                shopTime--;
+            }
+            else if (shopTime == 1)
+            {
+                shopTime--;
+                this.shopButton.Enabled = true;
+            }
+
+            if (cubeTime > 1)
+            {
+                cubeTime--;
+            }
+            else if ( cubeTime == 1)
+            {
+                cubeTime--;
+                if (!cubeAppeared)
+                {
+                    this.cubeAppeared = true;
+                    this.outputLabel.Text = Program.randCap("The Cube is here. Answer it's riddles!");
+                    cubeForm = new CubeForm(this);
+                    cubeForm.Show();
+                }
+                cubeForm.NewQuestion();
             }
         }
 
-        private void AttamptFeed(int buttonNum)
+        private void AttemptFeed(int buttonNum)
         {
             if (feedable)
             {
@@ -325,6 +363,12 @@ namespace The_Chair
             {
                 int buttonNum = Int32.Parse(radioButtonCounters[i].Name.Substring(16));
                 radioButtonCounters[i].Text = foodAmounts[buttonNum].ToString();
+            }
+
+            if (this.shopButton.Enabled)
+            {
+                this.shopButton.Enabled = false;
+                this.shopTime = 100;
             }
         }
 

@@ -23,8 +23,8 @@ namespace The_Chair
         private void SmashButton__Click(object sender, EventArgs e)
         {
             // Display quitting messege
-            //MessageBox.Show("You will forever be disatisfied with your inability to please the chair",
-            //    "You are free", MessageBoxButtons.OK);
+            MessageBox.Show("You will forever be disatisfied with your inability to please the chair",
+                "You are free", MessageBoxButtons.OK);
             // Exit Application
             Application.Exit();
         }

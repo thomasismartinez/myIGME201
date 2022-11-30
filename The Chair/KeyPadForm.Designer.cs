@@ -42,22 +42,22 @@
             this.buttonThrembo = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.enterButton = new System.Windows.Forms.Button();
-            this.questionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // inputLabel
             // 
             this.inputLabel.AutoSize = true;
-            this.inputLabel.Location = new System.Drawing.Point(87, 80);
+            this.inputLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.inputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputLabel.Location = new System.Drawing.Point(21, 9);
             this.inputLabel.Name = "inputLabel";
-            this.inputLabel.Size = new System.Drawing.Size(35, 16);
+            this.inputLabel.Size = new System.Drawing.Size(0, 22);
             this.inputLabel.TabIndex = 0;
-            this.inputLabel.Text = "input";
             this.inputLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(25, 116);
+            this.button1.Location = new System.Drawing.Point(25, 55);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(50, 50);
             this.button1.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(81, 116);
+            this.button2.Location = new System.Drawing.Point(81, 55);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(50, 50);
             this.button2.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(137, 116);
+            this.button3.Location = new System.Drawing.Point(137, 55);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(50, 50);
             this.button3.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(137, 172);
+            this.button6.Location = new System.Drawing.Point(137, 111);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(50, 50);
             this.button6.TabIndex = 6;
@@ -93,7 +93,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(81, 172);
+            this.button5.Location = new System.Drawing.Point(81, 111);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(50, 50);
             this.button5.TabIndex = 5;
@@ -102,7 +102,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(25, 172);
+            this.button4.Location = new System.Drawing.Point(25, 111);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 50);
             this.button4.TabIndex = 4;
@@ -111,7 +111,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(137, 228);
+            this.button9.Location = new System.Drawing.Point(137, 167);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(50, 50);
             this.button9.TabIndex = 9;
@@ -120,7 +120,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(81, 228);
+            this.button8.Location = new System.Drawing.Point(81, 167);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(50, 50);
             this.button8.TabIndex = 8;
@@ -129,7 +129,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(25, 228);
+            this.button7.Location = new System.Drawing.Point(25, 167);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(50, 50);
             this.button7.TabIndex = 7;
@@ -138,7 +138,7 @@
             // 
             // button0
             // 
-            this.button0.Location = new System.Drawing.Point(81, 284);
+            this.button0.Location = new System.Drawing.Point(81, 223);
             this.button0.Name = "button0";
             this.button0.Size = new System.Drawing.Size(50, 50);
             this.button0.TabIndex = 10;
@@ -147,16 +147,17 @@
             // 
             // buttonThrembo
             // 
-            this.buttonThrembo.Location = new System.Drawing.Point(25, 284);
+            this.buttonThrembo.Location = new System.Drawing.Point(25, 223);
             this.buttonThrembo.Name = "buttonThrembo";
             this.buttonThrembo.Size = new System.Drawing.Size(50, 50);
             this.buttonThrembo.TabIndex = 11;
-            this.buttonThrembo.Text = ">:3";
+            this.buttonThrembo.Text = "%";
             this.buttonThrembo.UseVisualStyleBackColor = true;
+            this.buttonThrembo.Visible = false;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(137, 284);
+            this.deleteButton.Location = new System.Drawing.Point(137, 223);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(50, 50);
             this.deleteButton.TabIndex = 12;
@@ -165,30 +166,20 @@
             // 
             // enterButton
             // 
-            this.enterButton.Location = new System.Drawing.Point(70, 364);
+            this.enterButton.Location = new System.Drawing.Point(70, 303);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(75, 23);
             this.enterButton.TabIndex = 13;
             this.enterButton.Text = "Enter";
             this.enterButton.UseVisualStyleBackColor = true;
             // 
-            // questionLabel
-            // 
-            this.questionLabel.AutoSize = true;
-            this.questionLabel.Location = new System.Drawing.Point(78, 32);
-            this.questionLabel.Name = "questionLabel";
-            this.questionLabel.Size = new System.Drawing.Size(58, 16);
-            this.questionLabel.TabIndex = 14;
-            this.questionLabel.Text = "question";
-            // 
             // KeyPadForm
             // 
             this.AcceptButton = this.enterButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 419);
+            this.ClientSize = new System.Drawing.Size(212, 349);
             this.ControlBox = false;
-            this.Controls.Add(this.questionLabel);
             this.Controls.Add(this.enterButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.buttonThrembo);
@@ -226,6 +217,5 @@
         private System.Windows.Forms.Button buttonThrembo;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button enterButton;
-        private System.Windows.Forms.Label questionLabel;
     }
 }
