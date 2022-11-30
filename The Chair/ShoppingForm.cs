@@ -16,9 +16,14 @@ namespace The_Chair
         List<Button> buttonList = new List<Button>();
         Random rand = new Random();
         int count = 1;
-        public ShoppingForm()
+        ChairForm parent;
+        int[] refRadioButtons;
+        public ShoppingForm(ChairForm chairForm, ref int[] foodCountList)
         {
             InitializeComponent();
+
+            parent = chairForm;
+            refRadioButtons = foodCountList;
 
             // Add all shopping buttons to buttonList
             foreach (Control control in this.Controls)
@@ -68,6 +73,8 @@ namespace The_Chair
                 sb.Visible = false;
                 // increase c
                 count++;
+                // add radio button count to parent's counts
+                refRadioButtons[Int32.Parse(sb.Text)]++;
                 //disable other buttons after 5 are collected
                 if (count == 5)
                 {
@@ -84,6 +91,8 @@ namespace The_Chair
 
         private void ExitButton__Click(object sender, EventArgs e)
         {
+            // update Chair Form's counters
+            parent.UpdateRadioButtonCount();
             // close form
             this.Close();
         }
