@@ -46,25 +46,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ChairForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ChairForm.Designer.cs">
+      <DependentUpon>ChairForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="CubeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="CubeForm.Designer.cs">
+      <DependentUpon>CubeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyPadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyPadForm.Designer.cs">
+      <DependentUpon>KeyPadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ShoppingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShoppingForm.Designer.cs">
+      <DependentUpon>ShoppingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmashForm.Designer.cs">
+      <DependentUpon>SmashForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ChairForm.resx">
+      <DependentUpon>ChairForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="CubeForm.resx">
+      <DependentUpon>CubeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyPadForm.resx">
+      <DependentUpon>KeyPadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +96,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShoppingForm.resx">
+      <DependentUpon>ShoppingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmashForm.resx">
+      <DependentUpon>SmashForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

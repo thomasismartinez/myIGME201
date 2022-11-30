@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace The_Chair
 {
-    public partial class Form2 : Form
+    public partial class KeyPadForm : Form
     {
-        public Form2()
+        public KeyPadForm()
         {
             InitializeComponent();
         }

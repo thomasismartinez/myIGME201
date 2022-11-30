@@ -338,9 +338,9 @@ true);
                 this.timer.Stop();
 
                 // Web Browser Box displays link
-                this.webGroupBox.Text = "https://www.youtube.com/watch?v=18212B4yfLg";
+                this.webGroupBox.Text = "https://www.youtube.com/embed/18212B4yfLg?autoplay=1";
                 // Web Browser opens fireworks youtube video
-                this.webBrowser.Navigate("https://www.youtube.com/watch?v=18212B4yfLg");
+                this.webBrowser.Navigate("https://www.youtube.com/embed/18212B4yfLg?autoplay=1");
 
                 // enable exit button
                 this.exitButton.Enabled = true;

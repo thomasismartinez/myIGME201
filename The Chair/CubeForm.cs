@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace The_Chair
 {
-    public partial class Form1 : Form
+    public partial class CubeForm : Form
     {
-        public Form1()
+        public bool riddlesCompleted = false;
+        public CubeForm()
         {
             InitializeComponent();
         }
