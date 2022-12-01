@@ -391,6 +391,7 @@ namespace The_Chair
 
         public void DecreaseHappiness(int happyPoints)
         {
+            // decrease happiness by given amount
             try { happinessToolStripProgressBar.Value -= happyPoints; }
             // if happiness decrease exceeds remaining happiness level
             catch {
@@ -428,7 +429,7 @@ namespace The_Chair
                 happinessToolStripProgressBar.Value = happinessToolStripProgressBar.Maximum;
                 // stop timer
                 timer.Stop();
-                // display vitory messege box
+                // display victory message box
                 MessageBox.Show(Program.randCap("The chair is happy now, but a piece of you will forever remain with the chair..."),
                     Program.randCap("YOU WON"), MessageBoxButtons.OK);
                 // exit application
