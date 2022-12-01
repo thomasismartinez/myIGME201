@@ -183,7 +183,7 @@ namespace The_Chair
                 parent.DecreaseHappiness(1000);
             }
 
-            parent.cubeTime = 40;
+            parent.cubeTime = 100;
             this.rightWrongLabel.Visible = true;
             this.qTimer.Stop();
             this.qToolStripProgressBar.Value = 30;

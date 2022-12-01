@@ -16,38 +16,32 @@ namespace The_Chair
     public partial class ChairForm : Form
     {
         Random random = new Random();
-        private CubeForm cubeForm;
-        private SmashForm smashForm;
-        private int[] foodAmounts = new int[] { 0,1,1,1,1,1,1,1,1,1,0,0,1 };
-        private List<Label> radioButtonCounters = new List<Label>();
-        private List<RadioButton> radioButtons = new List<RadioButton>();
-        private List<Button> buttons = new List<Button>();
-        private bool unhappy = false;
-        private bool feedable = false;
-        public bool cubeRiddlesComplete = false;
-        private int hungerTime = 50;
-        private bool strikable = true;
-        private bool strokable = true;
-        private int sitTime = 100;
-        private int shopTime = 0;
-        private int angryTime = 0;
-        public int cubeTime = 20;
-        private bool cubeAppeared = false;
-        private int feedCriteria;
-        private int gluppMultiplier = 1;
+        private CubeForm cubeForm; // cube form that asks questions for this form
+        private SmashForm smashForm; // smash form that allows program to be closed at any time
+        private int[] foodAmounts = new int[] { 0,1,1,1,1,1,1,1,1,1,0,0,1 }; // count of amount of each radio button user has sorted by index number
+        private List<Label> radioButtonCounters = new List<Label>(); // List of radio button labels for iteration
+        private List<RadioButton> radioButtons = new List<RadioButton>(); // List radio buttons for iteration
+        private List<Button> buttons = new List<Button>(); // List of buttons for iteration
+        private bool unhappy = false; // weather or not happiness is 0
+        private bool feedable = false; // is the chair can be fed
+        public bool cubeRiddlesComplete = false; // if the cube's riddles have been completed
+        private int hungerTime = 50; // milliseconds until chair gets hungry
+        private bool strikable = true; // weather or not the chair can be struck
+        private bool strokable = true; // weather or not the chair can be strocked
+        private int sitTime = 100; // milliseconds until the chair can be sat in
+        private int shopTime = 0; // milliseconds until the grocery store can be opened
+        private int angryTime = 0; // milliseconds until chair stops being angry
+        public int cubeTime = 300; // milliseconds until cube asks a question
+        private bool cubeAppeared = false; // weather or not the cube has appeared yet
+        private int feedCriteria; // selector of criteria for what radio buttons the chair likes
+        private int gluppMultiplier = 1; // happiness multiplier
         public ChairForm()
         {
             InitializeComponent();
 
-            // WIN BUTTON
-            this.winButton.Click += new EventHandler(WinButton__Click);
-            // WIN BUTTON
-
             // create and show smash chair form
             smashForm = new SmashForm();
             smashForm.Show();
-            
-            this.Text = Program.randCap(this.Text);
 
             // Add all radio button counters to radioButtonCounts
             foreach (Control control in this.feedGroupBox.Controls)
@@ -64,11 +58,8 @@ namespace The_Chair
             {
                 try { buttons.Add((Button)control); } catch { }
             }
-            // WIN BUTTON
-            buttons.Remove(winButton);
-            // WIN BUTTON
 
-            // select first criteria
+            // select first random feeding criteria
             this.feedCriteria = random.Next(1,5);
 
             // Add FeedChairButton__Click eventhandler to feedChairButton
@@ -92,15 +83,10 @@ namespace The_Chair
             // Start timer
             this.timer.Start();
         }
-        // WIN BUTTON
-        private void WinButton__Click(object sender, EventArgs e)
-        {
-            IncreaseHappiness(99999999);
-        }
-        // WIN BUTTON
 
         private void FeedChairButton__Click(object sender, EventArgs e)
         {
+            // Attempt to feed checked radio button to the chair
             foreach (RadioButton rb in radioButtons)
             {
                 if (rb.Checked)
@@ -111,12 +97,13 @@ namespace The_Chair
         }
         private void ShopButton__Click(object sender, EventArgs e)
         {
-            // Create and open new shopping form
+            // Create and show new shopping form
             ShoppingForm shoppingForm = new ShoppingForm(this, ref this.foodAmounts);
             shoppingForm.Show();
         }
         private void StrikeChairButton__Click(object sender, EventArgs e)
         {
+            // if chair just at and the user hasn't struck the chair since it last ate
             if (hungerTime > 30 && strikable)
             {
                 IncreaseHappiness(500);
@@ -130,6 +117,7 @@ namespace The_Chair
         }
         private void StrokeChairButton__Click(object sender, EventArgs e)
         {
+            // if chair is hungry and hasn't been stroked since it became so
             if (hungerTime == 0 && strokable)
             {
                 IncreaseHappiness(500);
@@ -143,8 +131,11 @@ namespace The_Chair
         }
         private void SitChairButton__Click(object sender, EventArgs e)
         {
+            // disable sit button andreset sit timer
             this.sitChairButton.Enabled = false;
             sitTime = 100;
+
+            // randomly select weather or not to make chair happier
             int chance = random.Next(0, 100);
             if (happinessToolStripProgressBar.Value < 10000 && chance > 95)
             {
@@ -177,7 +168,7 @@ namespace The_Chair
                 b1.Location = new Point(b2.Location.X, b2.Location.Y);
                 b2.Location = posOne;
 
-                // Randomely capitalize a random radio button
+                // Randomly capitalize a random radio button
                 int randRad = random.Next(0, radioButtons.Count);
                 radioButtons[randRad].Text = Program.randCap(radioButtons[randRad].Text);
             }
@@ -186,40 +177,41 @@ namespace The_Chair
         private void GluppCheckBox__Click(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            if (cb.Checked)
+            // If box is checked and the cube's riddles are complete
+            if (cb.Checked && cubeRiddlesComplete)
             {
-                if (cubeRiddlesComplete)
-                {
-                    gluppMultiplier = 3;
-                }
-                else
-                {
-                    this.outputLabel.Text = Program.randCap("not until you solve all of the cube's riddles!!");
-                    gluppCheckBox.Checked = false;
-                }
+                gluppMultiplier = 3;
             }
+            // else undo check and tell user why
             else
             {
-                gluppMultiplier = 1;
+                this.outputLabel.Text = Program.randCap("not until you solve all of the cube's riddles!!");
+                gluppCheckBox.Checked = false;
             }
 
         }
 
         private void Timer__Tick(object sender, EventArgs e)
         {
+            // Decrement all timers above 0
+
             if (hungerTime > 1)
             {
                 hungerTime--;
                 strikable = true;
             }
+            // when hungerTime runs out
             else if (hungerTime == 1) 
             {
                 hungerTime--;
+                // set feedable to true
+                feedable = true;
+                // output that chair is hungry
                 outputLabel.Text = "The chair is hungry now...";
             }
-            else 
+            // Decrease Happiness by 5 every time cubeTime is at 0
+            else
             {
-                feedable = true;
                 DecreaseHappiness(5);
             }
 
@@ -227,6 +219,7 @@ namespace The_Chair
             {
                 angryTime--;
             }
+            // when anmgryTime runs out hide angryPictureBox
             else if (angryTime == 1)
             {
                 angryTime--;
@@ -237,6 +230,7 @@ namespace The_Chair
             {
                 sitTime--;
             }
+            // when sitTime runs out enable Sit Button
             else if (sitTime == 1)
             {
                 sitTime--;
@@ -247,6 +241,7 @@ namespace The_Chair
             {
                 shopTime--;
             }
+            // when shopTime runs out enable Shop Button
             else if (shopTime == 1)
             {
                 shopTime--;
@@ -257,9 +252,12 @@ namespace The_Chair
             {
                 cubeTime--;
             }
+
+            // when cubeTime runs out
             else if ( cubeTime == 1)
             {
                 cubeTime--;
+                // create cube if it hasn't appeared yet
                 if (!cubeAppeared)
                 {
                     this.cubeAppeared = true;
@@ -267,6 +265,7 @@ namespace The_Chair
                     cubeForm = new CubeForm(this);
                     cubeForm.Show();
                 }
+                // have cube ask question
                 cubeForm.NewQuestion();
             }
         }
@@ -278,6 +277,7 @@ namespace The_Chair
                 int x = foodAmounts[buttonNum];
                 if (foodAmounts[buttonNum] != 0)
                 {
+                    // Check if button the user is trying to feed fits the chair’s criteria
                     switch (feedCriteria)
                     {
                         case 1: // Prime
@@ -316,29 +316,39 @@ namespace The_Chair
                 }
                 else
                 {
+                    // If the user is out of that radio button don’t go any further and tell the user
                     this.outputLabel.Text = Program.randCap("You're all out of radioButton" + buttonNum + "s!");
                 }
             }
             else
             {
+                // dont feed and tell user if chair cannot be fed
                 this.outputLabel.Text = Program.randCap("The chair is not hungry");
             }
         }
 
         private void Feed(int buttonNum)
         {
+            // reset hunger time
             hungerTime = 50;
+            // decrease count for fed radio button by one
             foodAmounts[buttonNum]--;
+            // Update radio button count
             UpdateRadioButtonCount();
+            // tell user the chair is full
             this.outputLabel.Text = Program.randCap("The chair is full now");
+            // make chair strokable and not feedable
             strokable = true;
             feedable = false;
         }
 
         private void FailFeed(string criteria)
         {
+            // Tell user the correct feeding criteria
             this.outputLabel.Text = Program.randCap("The Chair only likes Radio Buttons with " + criteria + ".");
+            // reset angry time 
             angryTime = 10;
+            // display angry chair picture box
             this.angryPictureBox.Visible = true;
         }
 
@@ -361,15 +371,20 @@ namespace The_Chair
         // Update radio button counters
         public void UpdateRadioButtonCount()
         {
+            // iterate through radio button labels
             for (int i = 0; i < 10; i++)
             {
                 int buttonNum = Int32.Parse(radioButtonCounters[i].Name.Substring(16));
+                // update count based on foodAmounts
                 radioButtonCounters[i].Text = foodAmounts[buttonNum].ToString();
             }
 
+            // if shop button is enabled
             if (this.shopButton.Enabled)
             {
+                // disable shop button
                 this.shopButton.Enabled = false;
+                // reset shopTime
                 this.shopTime = 100;
             }
         }
@@ -377,12 +392,17 @@ namespace The_Chair
         public void DecreaseHappiness(int happyPoints)
         {
             try { happinessToolStripProgressBar.Value -= happyPoints; }
+            // if happiness decrease exceeds remaining happiness level
             catch {
+                // set chair happiness to 0
                 happinessToolStripProgressBar.Value -= happinessToolStripProgressBar.Value;
                 if (!unhappy)
                 {
+                    // make chair unhappy
                     this.unhappy = true;
+                    // tell user the chair is very unhappy
                     this.outputLabel.Text = "the chair is very unhappy";
+                    // show unhappy chair picture box
                     this.unhappyPictureBox.Visible = true;
                 }
             }
@@ -390,18 +410,21 @@ namespace The_Chair
 
         public void IncreaseHappiness(int happyPoints)
         {
+            // increase happiness by given amount multiplied by glupp multiplier
             int increase = happyPoints * gluppMultiplier;
             try 
             {
                 happinessToolStripProgressBar.Value += increase;
                 if (unhappy)
                 {
+                    // hide unhappy picture box
                     this.unhappyPictureBox.Visible = false;
                 }
             }
+            // when increase exceeds remaining progress bar space you win
             catch 
             {
-                /* YOU WIN THE GAME IF THIS HAPPENS*/
+                // set chair happiness to empty
                 happinessToolStripProgressBar.Value = happinessToolStripProgressBar.Maximum;
                 // stop timer
                 timer.Stop();

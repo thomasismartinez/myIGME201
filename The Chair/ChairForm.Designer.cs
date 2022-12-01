@@ -62,7 +62,6 @@
             this.strokeChairButton = new System.Windows.Forms.Button();
             this.strikeChairButton = new System.Windows.Forms.Button();
             this.happinessLabel = new System.Windows.Forms.Label();
-            this.winButton = new System.Windows.Forms.Button();
             this.feedGroupBox = new System.Windows.Forms.GroupBox();
             this.angryPictureBox = new System.Windows.Forms.PictureBox();
             this.unhappyPictureBox = new System.Windows.Forms.PictureBox();
@@ -406,16 +405,6 @@
             this.happinessLabel.TabIndex = 10;
             this.happinessLabel.Text = "Happiness:";
             // 
-            // winButton
-            // 
-            this.winButton.Location = new System.Drawing.Point(1028, 31);
-            this.winButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.winButton.Name = "winButton";
-            this.winButton.Size = new System.Drawing.Size(85, 24);
-            this.winButton.TabIndex = 11;
-            this.winButton.Text = "win";
-            this.winButton.UseVisualStyleBackColor = true;
-            // 
             // feedGroupBox
             // 
             this.feedGroupBox.Controls.Add(this.radioButton4);
@@ -481,7 +470,6 @@
             this.Controls.Add(this.angryPictureBox);
             this.Controls.Add(this.feedGroupBox);
             this.Controls.Add(this.shopButton);
-            this.Controls.Add(this.winButton);
             this.Controls.Add(this.happinessLabel);
             this.Controls.Add(this.strikeChairButton);
             this.Controls.Add(this.strokeChairButton);
@@ -540,7 +528,6 @@
         private System.Windows.Forms.Label radioButtonLabel1;
         private System.Windows.Forms.Button shopButton;
         private System.Windows.Forms.Label happinessLabel;
-        private System.Windows.Forms.Button winButton;
         private System.Windows.Forms.GroupBox feedGroupBox;
         private System.Windows.Forms.PictureBox angryPictureBox;
         private System.Windows.Forms.PictureBox unhappyPictureBox;
