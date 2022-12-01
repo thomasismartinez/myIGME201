@@ -166,6 +166,7 @@
             // 
             // enterButton
             // 
+            this.enterButton.AccessibleDescription = "public";
             this.enterButton.Location = new System.Drawing.Point(70, 303);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(75, 23);

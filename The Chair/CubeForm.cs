@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace The_Chair
 {
@@ -16,6 +17,7 @@ namespace The_Chair
     {
         private Random random = new Random();
         private ChairForm parent;
+        private KeyPadForm keyPad;
         private List<string[]> numProblems = new List<string[]>();
         private List<string[]> wordProblems = new List<string[]>();
         private int numOfRiddles = 14;
@@ -35,11 +37,11 @@ namespace The_Chair
             numProblems.Add( new string[] { "2 + 2", "4" });
             numProblems.Add( new string[] { "5 * 3", "15" });
             numProblems.Add( new string[] { "6 / 2", "3" });
-            numProblems.Add( new string[] { "3 + 4", "%" });
-            numProblems.Add( new string[] { "9 + 9", "1%" });
-            numProblems.Add( new string[] { "6 * 4", "22" });
+            numProblems.Add( new string[] { "3 + 4 (assume a digit '%' between 6 and 7)", "%" });
+            numProblems.Add( new string[] { "9 + 9 (assume a digit '%' between 6 and 7)", "1%" });
+            numProblems.Add( new string[] { "6 * 4 (assume a digit '%' between 6 and 7)", "22" });
             numProblems.Add( new string[] { "13 / %", "2" });
-            numProblems.Add( new string[] { "% * %" ,"45" });
+            numProblems.Add( new string[] { "% * %", "45" });
 
             // create word problems
             wordProblems.Add(new string[] { "first letter in the word 'old'", "o" });
@@ -53,6 +55,12 @@ namespace The_Chair
 
             // Add SubmitWordButton__Click eventhandler to submitWordButton
             this.submitWordButton.Click += new EventHandler(SubmitWordButton__Click);
+
+            // Add keypresseventhandler towordResponseTextBox
+            this.wordResponseTextBox.KeyPress += new KeyPressEventHandler(WordResponseTextBox__KeyPress);
+
+            // Add QTimer__Tick eventhandler to qTimer
+            this.qTimer.Tick += new EventHandler(QTimer__Tick);
         }
 
         private void SubmitWordButton__Click(object sender, EventArgs e)
@@ -62,7 +70,42 @@ namespace The_Chair
             this.wordResponseTextBox.Text = "";
             this.wordResponseTextBox.Enabled = false;
         }
-        
+
+        private void WordResponseTextBox__KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (wordProblemsCompleted < 5 && e.KeyChar.ToString().ToLower() == "p")
+            {
+                e.Handled = true;
+                this.submitWordButton.PerformClick();
+                MessageBox.Show("The cube hates the letter 'p'. use a 'b' if you need to", "From: the chair", MessageBoxButtons.OK);
+            }
+            this.wordResponseTextBox.Text = Program.randCap(this.wordResponseTextBox.Text);
+            this.wordResponseTextBox.SelectionStart = this.wordResponseTextBox.Text.Length;
+            this.wordResponseTextBox.SelectionLength = 0;
+        }
+
+        private void QTimer__Tick(object sender, EventArgs e)
+        {
+            this.qToolStripProgressBar.Value--;
+
+            if  (this.qToolStripProgressBar.Value == 0)
+            {
+                this.qTimer.Stop();
+                if (num)
+                {
+                    this.keyPad.Close();
+                }
+                else
+                {
+                    this.submitWordButton.Enabled = false;
+                    this.wordResponseTextBox.Enabled = false;
+                    this.wordResponseTextBox.Text = "";
+                }
+                InputAnswer("OUTOFTIME");
+            }
+        }
+
+
         public void NewQuestion()
         {
             this.rightWrongLabel.Visible = false;
@@ -80,14 +123,14 @@ namespace The_Chair
             {
                 currentProblem = numProblems[0];
 
-                KeyPadForm keyPad = new KeyPadForm(this);
+                keyPad = new KeyPadForm(this);
                 keyPad.Show();
                 if (numProblemsCompleted == 3)
                 {
                     // Thrembo Mode!!!
                     thremboMode = true;
                 }
-                if (numProblemsCompleted > 2)
+                if (numProblemsCompleted == 2)
                 {
                     // start swapping buttons
                     keyPad.SwapButtons(numProblemsCompleted);
@@ -102,13 +145,15 @@ namespace The_Chair
             }
 
             this.qOutbputLabel.Text = currentProblem[0];
+            this.qToolStripProgressBar.Value = 30;
+            this.qTimer.Start();
         }
 
         public void InputAnswer(string ans)
         {
             if (ans == currentProblem[1])
             {
-                this.rightWrongLabel.Text = "RIGHT!";
+                this.rightWrongLabel.Text = "CORRECT!";
                 this.rightWrongLabel.ForeColor = Color.Green;
 
                 if (num)
@@ -132,13 +177,16 @@ namespace The_Chair
             }
             else
             {
-                this.rightWrongLabel.Text = "WRONG!";
+                if (ans == "OUTOFTIME") { this.rightWrongLabel.Text = "OUT OF TIME!"; }
+                else { this.rightWrongLabel.Text = "WRONG!"; }
                 this.rightWrongLabel.ForeColor = Color.Red;
                 parent.DecreaseHappiness(1000);
             }
 
-            parent.cubeTime = 10;
+            parent.cubeTime = 40;
             this.rightWrongLabel.Visible = true;
+            this.qTimer.Stop();
+            this.qToolStripProgressBar.Value = 30;
         }
     }
 }

@@ -13,13 +13,23 @@ namespace The_Chair
 {
     public partial class KeyPadForm : Form
     {
+        Random rand = new Random();
         CubeForm parent;
+        List<Button> buttons = new List<Button>();
         public KeyPadForm(CubeForm cube)
         {
             InitializeComponent();
 
             this.parent = cube;
 
+            // Add all input buttons to buttons list
+            foreach (Control c in this.Controls)
+            {
+                try { buttons.Add((Button)c); } catch { }
+            }
+            buttons.Remove(this.enterButton);
+
+            // Add 
             this.button0.Click += new EventHandler(Button__Click);
             this.button1.Click += new EventHandler(Button__Click);
             this.button2.Click += new EventHandler(Button__Click);
@@ -61,7 +71,15 @@ namespace The_Chair
 
         public void SwapButtons(int level)
         {
-            
+            for (int i = 0; i < level; i++)
+            {
+                Button b1 = buttons[rand.Next(0, 12)];
+                Button b2 = buttons[rand.Next(0, 12)];
+
+                Point posOne = new Point(b1.Location.X, b1.Location.Y);
+                b1.Location = new Point(b2.Location.X, b2.Location.Y);
+                b2.Location = posOne;
+            }
         }
     }
 }
