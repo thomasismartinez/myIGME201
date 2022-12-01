@@ -124,6 +124,7 @@ namespace The_Chair
             }
             else
             {
+                this.outputLabel.Text = "That only works if the chair just ate";
                 DecreaseHappiness(500);
             }
         }
@@ -136,6 +137,7 @@ namespace The_Chair
             }
             else
             {
+                this.outputLabel.Text = "That only works once while the chair is hungry";
                 DecreaseHappiness(500);
             }
         }
