@@ -48,7 +48,10 @@ namespace The_Chair
         }
         private void DeleteButton__Click(object sender, EventArgs e)
         {
-            this.inputLabel.Text = this.inputLabel.Text.Substring(0, this.inputLabel.Text.Length - 1);
+            if (this.inputLabel.Text.Length > 0)
+            {
+                this.inputLabel.Text = this.inputLabel.Text.Substring(0, this.inputLabel.Text.Length - 1);
+            }
         }
         private void EnterButton__Click(object sender, EventArgs e)
         {

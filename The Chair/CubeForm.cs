@@ -51,7 +51,6 @@ namespace The_Chair
             wordProblems.Add(new string[] { "ok maybe one more time", "p" });
             wordProblems.Add(new string[] { "what comes between 6 and 7?", "%" });
 
-
             // Add SubmitWordButton__Click eventhandler to submitWordButton
             this.submitWordButton.Click += new EventHandler(SubmitWordButton__Click);
         }
@@ -66,6 +65,7 @@ namespace The_Chair
         
         public void NewQuestion()
         {
+            this.rightWrongLabel.Visible = false;
             int numOrWord = random.Next(0, 2);
             if (wordProblemsCompleted < wordProblems.Count && numOrWord == 0)
             {
@@ -76,30 +76,26 @@ namespace The_Chair
                 num = true;
             }
 
-            numOfRiddles++;
-
-            if (num)
+            if (num && numProblems.Count > 0)
             {
-                currentProblem = numProblems[numProblemsCompleted];
-                numProblemsCompleted++;
+                currentProblem = numProblems[0];
 
                 KeyPadForm keyPad = new KeyPadForm(this);
                 keyPad.Show();
-                if (wordProblemsCompleted > 4)
+                if (numProblemsCompleted == 3)
                 {
                     // Thrembo Mode!!!
                     thremboMode = true;
                 }
-                if (wordProblemsCompleted > 2)
+                if (numProblemsCompleted > 2)
                 {
                     // start swapping buttons
-                    keyPad.SwapButtons(wordProblemsCompleted);
+                    keyPad.SwapButtons(numProblemsCompleted);
                 }
             }
-            else
+            else if (wordProblems.Count > 0)
             {
-                currentProblem = wordProblems[wordProblemsCompleted];
-                wordProblemsCompleted++;
+                currentProblem = wordProblems[0];
 
                 this.submitWordButton.Enabled = true;
                 this.wordResponseTextBox.Enabled = true;
@@ -126,10 +122,11 @@ namespace The_Chair
                     wordProblems.Remove(currentProblem);
                 }
 
-                if (numProblemsCompleted + wordProblemsCompleted > numOfRiddles)
+                if (numProblemsCompleted + wordProblemsCompleted == numOfRiddles)
                 {
-                    MessageBox.Show("From; The Cube", "Thank you for solving my riddles. Im sorry if they were any trouble." +
-                        "You can enable the chair's glupp now...", MessageBoxButtons.OK);
+                    MessageBox.Show("Thank you for solving my riddles. Im sorry if they were any trouble." +
+                        "You can enable the chair's glupp now...", "From: The Cube", MessageBoxButtons.OK);
+                    parent.cubeRiddlesComplete = true;
                     this.Close();
                 }
             }
@@ -137,6 +134,7 @@ namespace The_Chair
             {
                 this.rightWrongLabel.Text = "WRONG!";
                 this.rightWrongLabel.ForeColor = Color.Red;
+                parent.DecreaseHappiness(1000);
             }
 
             parent.cubeTime = 10;

@@ -151,6 +151,9 @@ true);
             this.toolStripProgressBar.Value = 240;
             // Add Timer__Tick eventhandler to Timer
             this.timer.Tick += new EventHandler(Timer__Tick);
+
+            // Add WebBrowser__DocumentCompleted to webBrowser
+            this.webBrowser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser__DocumentCompleted);
         }
 
         // president radio buttons Check Changed Event
@@ -314,6 +317,19 @@ true);
                 {
                     numBox.Text = "0";
                 }
+            }
+        }
+
+        private void WebBrowser__DocumentCompleted(object sender, EventArgs e)
+        {
+            WebBrowser wb = (WebBrowser)sender;
+
+            HtmlElementCollection htmlElementCollection = wb.Document.GetElementsByTagName("a");
+
+            // Set the title of each element on the web browser Document with tag “a” to: “Prof Schuh for President!”
+            foreach (HtmlElement element in htmlElementCollection)
+            {
+                element.SetAttribute("title", "Prof Schuh for President!");
             }
         }
 

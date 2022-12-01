@@ -22,9 +22,9 @@ namespace The_Chair
         private List<Label> radioButtonCounters = new List<Label>();
         private List<RadioButton> radioButtons = new List<RadioButton>();
         private List<Button> buttons = new List<Button>();
-        bool unhappy = false;
-        bool feedable = false;
-        bool cubeRiddlesComplete = false;
+        private bool unhappy = false;
+        private bool feedable = false;
+        public bool cubeRiddlesComplete = false;
         private int hungerTime = 50;
         private bool strikable = true;
         private bool strokable = true;
