@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using LinkedListVisualizer;
+using System.Windows.Forms.VisualStyles;
 
 namespace LinkedList
 {
@@ -158,7 +159,10 @@ namespace LinkedList
             LinkedList<object> linkedList = new LinkedList<object>();
 
             // 2. Your code here
-
+            for (int i = 1; i <= 10; i++)
+            {
+                linkedList.AddLast(i);
+            }
 
             // 3. then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(linkedList);
@@ -170,6 +174,10 @@ namespace LinkedList
             LinkedList<object> linkedList = new LinkedList<object>();
 
             // 2. Your code here
+            for (int i = 1; i <= 10; i++)
+            {
+                linkedList.AddLast(i);
+            }
 
             // 3. using example #18, copy the linkedList to reverseLinkedList in reverse order
             // so that reverseLinkedList goes from 10 to 1
@@ -177,7 +185,13 @@ namespace LinkedList
             LinkedListNode<object> linkedListNode;
 
             // 4. Your code here
+            linkedListNode = linkedList.Last;
 
+            while (linkedListNode != null)
+            {
+                reverseLinkedList.AddLast(linkedListNode.Value);
+                linkedListNode = linkedListNode.Previous;
+            }
 
             // 5. then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(reverseLinkedList);
@@ -189,17 +203,23 @@ namespace LinkedList
             // "the", "fox", "jumped", "over", "the", "dog"
             LinkedList<object> linkedList = null;
             LinkedListNode<object> linkedListNode;
-            string[] sentence = null;
+            string[] sentence = { "the", "fox", "jumped", "over", "the", "dog" };
 
             // 2. Your code here
+            linkedList = new LinkedList<object>(sentence);
 
             // 3. add "quick" and "brown" before "fox"
 
             // 4. Your code here
+            linkedListNode = linkedList.Find("fox");
+            linkedList.AddBefore(linkedListNode, "quick");
+            linkedList.AddBefore(linkedListNode, "brown");
 
             // 5. using example #8, add "lazy" after the last "the"
-            
+
             // 6. Your code here
+            linkedListNode = linkedList.FindLast("the");
+            linkedList.AddAfter(linkedListNode, "lazy");
 
             // 7. then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(linkedList);
@@ -215,7 +235,9 @@ namespace LinkedList
             string[] s = null;
 
             // 2. Your code here
-
+            s = ( "Because I'm sad Clap along if you feel like a room without a roof " +
+                "Because I'm sad Clap along if you feel like sadness is the truth sad" ).Split(' ');
+            linkedList = new LinkedList<object>(s);
 
             // 3. replace "sad" with "happy"
             // and "sadness with "happiness"
@@ -224,6 +246,21 @@ namespace LinkedList
             //     if( (string)linkedListNode.Value == "sad"
 
             // 4. Your code here
+
+            linkedListNode = linkedList.First;
+
+            while (linkedListNode != null)
+            {
+                if ((string)linkedListNode.Value == "sad")
+                {
+                    linkedListNode.Value = "happy";
+                }
+                else if ((string)linkedListNode.Value == "sadness")
+                {
+                    linkedListNode.Value = "happiness";
+                }
+                linkedListNode = linkedListNode.Next;
+            }
 
 
             // 5. then call the visualizer
@@ -240,7 +277,8 @@ namespace LinkedList
             string[] s = null;
 
             // 2. Your code here
-
+            s = "The Spain in rain falls plain on the mainly".Split(' ');
+            linkedList = new LinkedList<object>(s);
 
             // 3. manipulate the list using Find(), Remove(), AddBefore() and/or AddAfter() to result in
             // "The rain in Spain falls mainly on the plain"
@@ -248,7 +286,23 @@ namespace LinkedList
             // you may not use string arguments in your Add method calls
 
             // 4. Your code here
+            linkedListNode1 = linkedList.Find("rain");
+            linkedListNode2 = linkedList.Find("Spain");
+            linkedList.Remove(linkedListNode1);
+            linkedList.AddBefore(linkedListNode2, linkedListNode1);
 
+            linkedListNode1 = linkedList.Find("in");
+            linkedList.Remove(linkedListNode1);
+            linkedList.AddBefore(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = linkedList.Find("mainly");
+            linkedListNode2 = linkedList.Find("plain");
+            linkedList.Remove(linkedListNode1);
+            linkedList.AddBefore(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = linkedList.Find("the");
+            linkedList.Remove(linkedListNode2);
+            linkedList.AddAfter(linkedListNode1, linkedListNode2);
 
             // 5. then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(linkedList);
@@ -267,6 +321,30 @@ namespace LinkedList
             // you may not use string arguments in your Add method calls
 
             // Your code here
+            linkedListNode1 = anagram.Find("I");
+            linkedListNode2 = anagram.Find("D");
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = anagram.Find("O");
+            linkedListNode2 = anagram.Find("T");
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = anagram.Find("M");
+            linkedListNode2 = anagram.Find("Y");
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = anagram.Find("Y");
+            linkedListNode2 = anagram.Find("T");
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
+
+            linkedListNode1 = anagram.FindLast("R");
+            linkedListNode2 = anagram.Find("Y");
+            anagram.Remove(linkedListNode1);
+            anagram.AddAfter(linkedListNode2, linkedListNode1);
 
             // then call the visualizer
             VisualizeLinkedList visualizeLinkedList = new VisualizeLinkedList(anagram);
