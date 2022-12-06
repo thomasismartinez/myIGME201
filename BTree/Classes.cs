@@ -65,7 +65,7 @@ namespace BTree
 
 
         //////////////////////////////////////////////////////////
-        // overload all operators to compare BTree nodes by int or string data
+        // overload all operators to compare BTree nodes by int or string data OR Person
         public static bool operator ==(BTree a, BTree b)
         {
             bool returnVal = false;
@@ -405,8 +405,52 @@ namespace BTree
         // Print the tree in descending order
         public static void TraverseDescending(BTree node)
         {
+            if(node != null)
+            {
+                TraverseDescending(node.gteChild);
+
+                if (node.isData)
+                {
+                    PrintThisNode(node);
+                }
+
+                TraverseDescending(node.ltChild);
+            }
         }
         //////////////////////////////////////////////////////////
+        /// Print the tree in pre order
+        public static void TraversePreOrder(BTree node)
+        {
+            if (node != null)
+            {
+
+                if (node.isData)
+                {
+                    PrintThisNode(node);
+                }
+
+                TraversePreOrder(node.ltChild);
+
+                TraversePreOrder(node.gteChild);
+            }
+        }
+        //////////////////////////////////////////////////////////
+        /// Print the tree in post order
+        public static void TraversePostOrder(BTree node)
+        {
+            if (node != null)
+            {
+
+                TraversePostOrder(node.ltChild);
+
+                TraversePostOrder(node.gteChild);
+
+                if (node.isData)
+                {
+                    PrintThisNode(node);
+                }
+            }
+        }
     }
 
     public class Person
