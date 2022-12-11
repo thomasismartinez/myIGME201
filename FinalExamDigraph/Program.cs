@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,8 +56,36 @@ namespace FinalExamDigraph
             /* orange */new int[] { 1 },
             /* green */ null
         };
+
+        static void DFS(EColor eState)
+        {
+            bool[] visited = new bool[colorAGraph.Length];
+
+            DFSUtil(eState, visited);
+        }
+
+        static void DFSUtil(EColor v, bool[] visited)
+        {
+            visited[(int)v] = true;
+
+            Console.Write(v.ToString() + " ");
+
+            int[] thisStateList = colorAGraph[(int)v];
+            if (thisStateList != null)
+            {
+                foreach (int n in thisStateList)
+                {
+                    if (!visited[n])
+                    {
+                        DFSUtil((EColor)n, visited);
+                    }
+                }
+            }
+        }
         static void Main(string[] args)
         {
+            // DFS Search
+            DFS(EColor.red);
         }
     }
 }
