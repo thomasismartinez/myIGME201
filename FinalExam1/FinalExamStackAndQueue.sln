@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalExam1", "FinalExam1.csproj", "{8A464E03-E557-42C4-A7EC-4B7C0EB03455}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalExamStackAndQueue", "FinalExamStackAndQueue.csproj", "{8A464E03-E557-42C4-A7EC-4B7C0EB03455}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
