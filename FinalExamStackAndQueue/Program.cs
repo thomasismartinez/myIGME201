@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalExamStackAndQueue;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalExamStackAndQueue
 {
+    // Stack Class
     public class MyStack
     {
         public List<int> myStack = new List<int>();
@@ -42,6 +44,7 @@ namespace FinalExamStackAndQueue
         }
     }
 
+    // Queue Class
     public class MyQueue
     {
         public List<int> myQueue = new List<int>();
@@ -80,10 +83,6 @@ namespace FinalExamStackAndQueue
 
     internal class Program
     {
-        /// <summary>
-        /// Class: Main
-        /// Purpose 
-        /// </summary>
         static void Main(string[] args)
         {
         }
