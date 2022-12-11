@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalExam1
+namespace FinalExamStackAndQueue
 {
     public class MyStack
     {
