@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FinalExamDigraph
 {
     // Digraph Adjacency Matrix
-    enum EColor
+    public enum EColor
     {
         red,
         blue,
@@ -20,11 +20,11 @@ namespace FinalExamDigraph
         green
     }
 
-    // Dijkstra's shortest path algorithm
+    // Dijkstra Node and Edge
     public class Node : IComparable<Node>
     {
         // data
-        public int nState;
+        public EColor nState;
 
         // list of edges
         public List<Edge> edges = new List<Edge>();
@@ -33,10 +33,9 @@ namespace FinalExamDigraph
         public Node nearestToStart;
         public bool visited;
 
-
         public Node(int nState)
         {
-            this.nState = nState;
+            this.nState = (EColor)nState;
             this.minCostToStart = int.MaxValue;
         }
 
@@ -51,6 +50,7 @@ namespace FinalExamDigraph
             return this.minCostToStart.CompareTo(n.minCostToStart);
         }
     }
+
     public class Edge : IComparable<Edge>
     {
         public int cost;
@@ -71,6 +71,7 @@ namespace FinalExamDigraph
     internal class Program
     {
         public static List<Node> colorNodes = new List<Node>();
+
         // Adjacency
         static int[,] colorMGraph = new[,]
         {              /*red,blue,yellow,cyan,gray,purple,orange,green
@@ -132,11 +133,12 @@ namespace FinalExamDigraph
             }
         }
 
+        // Dijkstra Search
         static public List<Node> GetShortestPathDijkstra()
         {
             DijkstraSearch();
             List<Node> shortestPath = new List<Node>();
-            shortestPath.Add(colorNodes[0]);
+            shortestPath.Add(colorNodes[7]);
             BuildShortestPath(shortestPath, colorNodes[7]);
             shortestPath.Reverse();
             return (shortestPath);
@@ -178,12 +180,14 @@ namespace FinalExamDigraph
 
                 // option #2, use .OrderBy() with a delegate method or lambda expression 
                 // the next 6 lines are equivalent from descriptive to abbreviated:
+                /*
                 prioQueue = prioQueue.OrderBy(nodeOrderBy).ToList();
                 prioQueue = prioQueue.OrderBy(delegate (Node n) { return n.minCostToStart; }).ToList();
                 prioQueue = prioQueue.OrderBy((Node n) => { return n.minCostToStart; }).ToList();
                 prioQueue = prioQueue.OrderBy((n) => { return n.minCostToStart; }).ToList();
                 prioQueue = prioQueue.OrderBy((n) => n.minCostToStart).ToList();
                 prioQueue = prioQueue.OrderBy(n => n.minCostToStart).ToList();
+                */
 
                 Node node = prioQueue.First();
                 prioQueue.Remove(node);
@@ -218,17 +222,16 @@ namespace FinalExamDigraph
             } while (prioQueue.Any());
         }
 
-    static void Main(string[] args)
+        static void Main(string[] args)
         {
             // DFS Search
             Console.WriteLine("DFS Search:");
             DFS(EColor.red);
 
             // Dijkstra shortest Path
-            Console.WriteLine("\n\nDijkstra Search,");
             Node node;
 
-            for (int i = 0; i < colorAGraph.Length; i++)
+            for(int i = 0; i < colorAGraph.Length; i++)
             {
                 node = new Node(i);
                 colorNodes.Add(node);
@@ -236,14 +239,13 @@ namespace FinalExamDigraph
 
             List<Node> shortestPath = GetShortestPathDijkstra();
 
-            Console.WriteLine("Shortest Path:");
-            foreach (Node color in shortestPath)
-            {
-                Console.Write((EColor)(color.nState) + " ");
-            }
-            Console.Write("\n");
-        }
-    }
+            Console.WriteLine("\n\nDijkstra's Algorithm, shortest path:");
 
-    
+            foreach (Node cn in shortestPath)
+            {
+                Console.Write(cn.nState + " ");
+            }
+            Console.WriteLine("");
+        }
+    } 
 }

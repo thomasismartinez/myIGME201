@@ -38,6 +38,7 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.loginButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.userLabel = new System.Windows.Forms.Label();
             this.followButton = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.filterFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -121,6 +122,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.userLabel);
             this.splitContainer1.Panel1.Controls.Add(this.followButton);
             this.splitContainer1.Panel1.Controls.Add(this.refreshButton);
             this.splitContainer1.Panel1.Controls.Add(this.loginButton);
@@ -135,6 +137,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(872, 542);
             this.splitContainer1.SplitterDistance = 119;
             this.splitContainer1.TabIndex = 11;
+            // 
+            // userLabel
+            // 
+            this.userLabel.AutoSize = true;
+            this.userLabel.Location = new System.Drawing.Point(558, 9);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(181, 16);
+            this.userLabel.TabIndex = 11;
+            this.userLabel.Text = "Currently Logged In As: Guest";
             // 
             // followButton
             // 
@@ -201,6 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -225,6 +237,7 @@
         private System.Windows.Forms.FlowLayoutPanel filterFlowLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel feedFlowLayoutPanel;
         private System.Windows.Forms.Button followButton;
+        private System.Windows.Forms.Label userLabel;
     }
 }
 

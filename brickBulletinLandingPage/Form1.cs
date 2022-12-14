@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,28 +16,51 @@ namespace brickBulletinLandingPage
 {
     public partial class HomeForm : Form
     {
-        private string currentUser;
-        public SortedList<string, string> userList;
-        public List<string> verifiedUsers = new List<string>();
-        private List<Post> feed = new List<Post>();
+        private List<Post> feed;
         private List<string> filteredUsers = new List<string>();
-        private List<string> followedUsers = new List<string>();
-
-        public Color[] pallete = new Color[3] {Color.Red, Color.Red, Color.Red};
+        private string currentGroupPage;
         public HomeForm()
         {
             InitializeComponent();
 
-            //TEST//
-            Post post = new Post("Rochester Institute of Technology", "Catalytic Converter Thefts", "somebody is still stealing catalytic converters" +
+            //Demonstrational Code//
+            User user = new User("RIT", "pw", true);
+
+            // test user
+            User viewer = new User("viewerTest", "vtPW", false);
+            User poster = new User("posterTest", "ptPW", true);
+
+            user = new User("Thomas Martinez", "pw", true);
+            viewer.followedUsers.Add(user);
+            user = new User("WITR", "pw", true);
+            viewer.followedUsers.Add(user);
+            user = new User("Launch Initiative", "pw", true);
+            viewer.followedUsers.Add(user);
+            user = new User("RIT Dining", "pw", true);
+
+            // create posts
+            Post post = new Post("RIT", "Catalytic Converter Thefts", "somebody is still stealing catalytic converters" +
                 " around campus.", new DateTime(2022,10,29));
-            GeneratePostControl(post);
-            feed.Add(post);
-            post = new Post("Rochester Institute of Technology", "Lithium Ion Battery Fire", "somebody is still blowing up Lithium Ion Batteries" +
+            Program.groups["RIT"].posts.Add(post);
+            post = new Post("RIT", "Lithium Ion Battery Fire", "somebody is still blowing up Lithium Ion Batteries" +
                 " around.", new DateTime(2022, 11, 1));
-            GeneratePostControl(post);
-            feed.Add(post);
-            //TEST//
+            Program.groups["RIT"].posts.Add(post);
+            post = new Post("Thomas Martinez", "HELLO", "This is the first thing ever posted to Brick Bulletin", new DateTime(1, 1, 1));
+            Program.groups["Thomas Martinez"].posts.Add(post);
+            post = new Post("WITR", "College Radio Day", "College radio day is coming up! Stop by GV to hang out and listen!", new DateTime(2012, 2, 13));
+            Program.groups["WITR"].posts.Add(post);
+            post = new Post("Launch Initiative", "ROCKETS", "We shoot things at the sky come join us!", new DateTime(2019, 4, 12));
+            Program.groups["Launch Initiative"].posts.Add(post);
+            post = new Post("WITR", "DJ Training", "First Round of DJ training is tomorrow", new DateTime(2023, 2, 13));
+            Program.groups["WITR"].posts.Add(post);
+            post = new Post("RIT Dining", "Locations closing", "Starting the 14th of December all RIT Dining locations " +
+                "will be closed until the 16th of Janurary.", new DateTime(2022, 12, 10));
+            Program.groups["RIT Dining"].posts.Add(post);
+            post = new Post("RIT Dining", "Locations opening", "Starting the 16th of December all RIT Dining locations " +
+                "will be openong again until the 16th of Janurary.", new DateTime(2023, 1, 10));
+            Program.groups["RIT Dining"].posts.Add(post);
+
+            //Demonstrational Code//
 
             // Button Event Handlers
             this.loginButton.Click += new EventHandler(LoginButton__Click);
@@ -50,28 +74,12 @@ namespace brickBulletinLandingPage
             this.feedFlowLayoutPanel.SizeChanged += new EventHandler(FeedFlowLayoutPanel__SizeChanged);
 
             // Generate default to logged-out view
+            // guest user
+            User guest = new User("GUEST", "", false);
+            Program.currentUser = guest;
 
-            // RIT filter
-            GenerateFilterControl("Rochester Institute of Technology");
-
-            // 
-            followedUsers.Add("Rochester Institute of Technology");
-        }
-
-        // Data structure for storing post information
-        public struct Post
-        {
-            public Post(string c, string t, string b, DateTime d)
-            {
-                this.creator = c;
-                this.title = t;
-                this.body = b;
-                this.created = d;
-            }
-            public string creator { get; }
-            public string title { get; }
-            public string body { get; }
-            public DateTime created { get; }
+            RefreshFeed();
+            RefreshFilters();
         }
 
         // Create post control and add it to feed
@@ -116,15 +124,29 @@ namespace brickBulletinLandingPage
             filterFlowLayoutPanel.Controls.Add(filterButton);
         }
 
+        public void RefreshFilters()
+        {
+            this.filterFlowLayoutPanel.Controls.Clear();
+
+            foreach (User fUser in Program.currentUser.followedUsers)
+            {
+                // Add filter buttons
+                GenerateFilterControl(fUser.name);
+            }
+        }
+
         // Fill/Refresh feedFlowLayoutBox with up to date posts
         public void RefreshFeed()
         {
+            feed = new List<Post>();
             IEnumerable<Post> sortedPosts = new List<Post>();
-            foreach (string fUser in followedUsers)
+            foreach (User fUser in Program.currentUser.followedUsers)
             {
-                // Add all post by fUser to allPosts in order of date
-                sortedPosts = (this.feed.OrderBy( x => x.created)).Reverse();
+                sortedPosts.Concat(fUser.posts);
+                feed.AddRange(fUser.posts);
             }
+            // Add all post by fUser to sortedPosts in order of date
+            sortedPosts = (this.feed.OrderBy(x => x.created)).Reverse();
 
             // Clear feed
             this.feedFlowLayoutPanel.Controls.Clear();
@@ -136,7 +158,7 @@ namespace brickBulletinLandingPage
                 {
                     GeneratePostControl(p);
                 }
-            }
+            }     
         }
 
         /*
@@ -150,28 +172,40 @@ namespace brickBulletinLandingPage
             Button lib =(Button)sender;
             // Open Login Form
 
-            // Demonstrational
-            if (lib.Text != "tjm7126")
+            //TEST
+            string un = "";
+
+            if (this.userLabel.Text == "Currently Logged In As: Guest")
             {
-                Post post = new Post("Thomas Martinez", "HELLO", "This is the first thing ever posted to Brick Bulletin", new DateTime(1, 1, 1));
-                GeneratePostControl(post);
-                feed.Add(post);
-                post = new Post("WITR", "College Radio Day", "College radio day is coming up! Stop by GV to hang out and listen!", new DateTime(2012, 2, 13));
-                GeneratePostControl(post);
-                feed.Add(post);
-                post = new Post("Launch Initiative", "ROCKETS", "We shoot things at the sky come join us!", new DateTime(2019, 4, 12));
-                GeneratePostControl(post);
-                feed.Add(post);
-                post = new Post("WITR", "DJ Training", "First Round of DJ training is tomorrow", new DateTime(2023, 2, 13));
-                GeneratePostControl(post);
-                feed.Add(post);
-                GenerateFilterControl("Thomas Martinez");
-                GenerateFilterControl("Launch Initiative");
-                GenerateFilterControl("WITR");
-                createPostButton.Visible = true;
+                un = "viewerTest";
+            }
+            else if (this.userLabel.Text == "Currently Logged In As: viewerTest")
+            {
+                un = "posterTest";
+            }
+            else if (this.userLabel.Text == "Currently Logged In As: posterTest")
+            {
+                un = "Guest";
+            }
+            //TEST
+
+            lib.Text = "Log Out";
+            try
+            {
+                Program.currentUser = Program.users[un];
+                this.createPostButton.Visible = false;
+            }
+            // if user is verified poster
+            catch
+            {
+                Program.currentUser = Program.groups[un];
+                this.createPostButton.Visible = true;
             }
 
-            lib.Text = "tjm7126";
+            this.userLabel.Text = "Currently Logged In As: " + Program.currentUser.name;
+
+            RefreshFeed();
+            RefreshFilters();
         }
         private void SearchButton__Click(object sender, EventArgs e)
         {
@@ -202,7 +236,6 @@ namespace brickBulletinLandingPage
         private void FilterButton__Click(object sender, EventArgs e)
         {
             Button fb = (Button)sender;
-
 
             string userFilter = fb.Text;
             if (this.filteredUsers.Contains(userFilter))

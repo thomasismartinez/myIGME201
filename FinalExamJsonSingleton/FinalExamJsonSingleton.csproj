@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A3E3555F-4CEF-4CD8-8924-E2AFFE085D2D}</ProjectGuid>
+    <ProjectGuid>{6BD11FE7-A7ED-4940-AB98-422B5B54C82D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TestCode</RootNamespace>
-    <AssemblyName>TestCode</AssemblyName>
+    <RootNamespace>FinalExamJsonSingleton</RootNamespace>
+    <AssemblyName>FinalExamJsonSingleton</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
