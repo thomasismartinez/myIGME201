@@ -37,7 +37,7 @@ namespace FinalExamJsonSingleton
             return instance;
         }
 
-        public PlayerSettings Load(string path = "c:/temp/player.json")
+        public PlayerSettings Load(string path = "c:/temp/playerStats.json")
         {
             StreamReader reader = new StreamReader(path);
             string data = reader.ReadToEnd();
@@ -45,7 +45,7 @@ namespace FinalExamJsonSingleton
             return JsonConvert.DeserializeObject<PlayerSettings>(data);
         }
 
-        public void Save(PlayerSettings obj, string path = "c:/temp/player.json")
+        public void Save(PlayerSettings obj, string path = "c:/temp/playerStats.json")
         {
             string data = JsonConvert.SerializeObject(obj);
             StreamWriter writer = new StreamWriter(path);
