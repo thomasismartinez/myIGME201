@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Max Chu
+
 namespace brickBulletin
 {
     public partial class Login : Form
@@ -22,6 +24,17 @@ namespace brickBulletin
             this.loginButton.Click += new EventHandler(LoginButton__Click);
             this.signupButton.Click += new EventHandler(SignupButton__Click);
             this.guestButton.Click += new EventHandler(GuestButton__Click);
+
+            // style
+            this.BackColor = Program.BackColor;
+            this.ForeColor = Program.ForeColor;
+            this.Font = new Font("Arial", Program.normalSize, FontStyle.Regular);
+            foreach (Control c in this.Controls)
+            {
+                c.BackColor = Program.BackColor;
+            }
+            this.passwordTextBox.ForeColor = Program.ForeColor;
+            this.usernameTextBox.ForeColor = Program.ForeColor;
         }
 
         private void UsernameTextBox__Validating(object sender, CancelEventArgs e)

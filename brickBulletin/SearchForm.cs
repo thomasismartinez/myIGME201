@@ -27,6 +27,16 @@ namespace brickBulletin
             this.searchButton.Click += new EventHandler(searchButton__Click);
             string searchKey = this.searchKeyText.Text;
             this.homeForm = homeForm;
+
+            // style
+            this.BackColor = Program.BackColor;
+            this.ForeColor = Program.ForeColor;
+            this.Font = new Font("Arial", Program.normalSize, FontStyle.Regular);
+            foreach (Control c in this.Controls)
+            {
+                c.BackColor = Program.BackColor;
+            }
+            this.searchButton.BackColor = Program.BackColor;
         }
 
         private void searchButton__Click(object sender, EventArgs e)

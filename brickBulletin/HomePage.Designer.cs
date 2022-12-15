@@ -38,12 +38,13 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.loginButton = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pageLabel = new System.Windows.Forms.Label();
             this.userLabel = new System.Windows.Forms.Label();
             this.followButton = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.filterFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.feedFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.pageLabel = new System.Windows.Forms.Label();
+            this.homeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -123,6 +124,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.homeButton);
             this.splitContainer1.Panel1.Controls.Add(this.pageLabel);
             this.splitContainer1.Panel1.Controls.Add(this.userLabel);
             this.splitContainer1.Panel1.Controls.Add(this.followButton);
@@ -139,6 +141,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(872, 542);
             this.splitContainer1.SplitterDistance = 119;
             this.splitContainer1.TabIndex = 11;
+            // 
+            // pageLabel
+            // 
+            this.pageLabel.AutoSize = true;
+            this.pageLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageLabel.Location = new System.Drawing.Point(570, 85);
+            this.pageLabel.Name = "pageLabel";
+            this.pageLabel.Size = new System.Drawing.Size(61, 23);
+            this.pageLabel.TabIndex = 12;
+            this.pageLabel.Text = "Home";
             // 
             // userLabel
             // 
@@ -180,7 +192,7 @@
             // filterFlowLayoutPanel
             // 
             this.filterFlowLayoutPanel.AutoScroll = true;
-            this.filterFlowLayoutPanel.BackColor = System.Drawing.Color.LightGray;
+            this.filterFlowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.filterFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.filterFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -201,15 +213,14 @@
             this.feedFlowLayoutPanel.TabIndex = 6;
             this.feedFlowLayoutPanel.WrapContents = false;
             // 
-            // pageLabel
+            // homeButton
             // 
-            this.pageLabel.AutoSize = true;
-            this.pageLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageLabel.Location = new System.Drawing.Point(570, 85);
-            this.pageLabel.Name = "pageLabel";
-            this.pageLabel.Size = new System.Drawing.Size(61, 23);
-            this.pageLabel.TabIndex = 12;
-            this.pageLabel.Text = "Home";
+            this.homeButton.Location = new System.Drawing.Point(775, 72);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(85, 36);
+            this.homeButton.TabIndex = 13;
+            this.homeButton.Text = "Home";
+            this.homeButton.UseVisualStyleBackColor = true;
             // 
             // HomeForm
             // 
@@ -251,6 +262,7 @@
         private System.Windows.Forms.Button followButton;
         private System.Windows.Forms.Label userLabel;
         private System.Windows.Forms.Label pageLabel;
+        private System.Windows.Forms.Button homeButton;
     }
 }
 

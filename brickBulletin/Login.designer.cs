@@ -40,10 +40,8 @@
             this.userErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.passErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.guestButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.userErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -130,25 +128,13 @@
             this.guestButton.Text = "VIEW AS GUEST";
             this.guestButton.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 252);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(225, 186);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.guestButton);
             this.Controls.Add(this.signupButton);
             this.Controls.Add(this.loginButton);
@@ -158,11 +144,10 @@
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.titleLabel);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = "Login Page";
             ((System.ComponentModel.ISupportInitialize)(this.userErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,7 +165,6 @@
         private System.Windows.Forms.ErrorProvider userErrorProvider;
         private System.Windows.Forms.ErrorProvider passErrorProvider;
         private System.Windows.Forms.Button guestButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

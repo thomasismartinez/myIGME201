@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Max Chu
+
 namespace brickBulletin
 {
     public partial class Signup : Form
@@ -18,6 +20,18 @@ namespace brickBulletin
 
             this.createButton.Click += new EventHandler(CreateButton__Click);
             this.cancelButton.Click += new EventHandler(CancelButton__Click);
+
+            // style
+            this.BackColor = Program.BackColor;
+            this.ForeColor = Program.ForeColor;
+            this.Font = new Font("Arial", Program.normalSize, FontStyle.Regular);
+            foreach (Control c in this.Controls)
+            {
+                c.BackColor = Program.BackColor;
+            }
+            this.passTextBox1.ForeColor = Program.ForeColor;
+            this.passTextBox2.ForeColor = Program.ForeColor;
+            this.userTextBox.ForeColor = Program.ForeColor;
         }
 
         private void CreateButton__Click(object sender, EventArgs e)

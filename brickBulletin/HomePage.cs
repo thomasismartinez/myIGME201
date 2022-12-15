@@ -11,6 +11,9 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+
+// Thomas Martinez
 
 namespace brickBulletin
 {
@@ -70,6 +73,7 @@ namespace brickBulletin
             this.createPostButton.Click += new EventHandler(CreatePostButton__Click);
             this.refreshButton.Click += new EventHandler(RefreshButton__Click);
             this.followButton.Click += new EventHandler(FollowButton__Click);
+            this.homeButton.Click += new EventHandler(HomeButton__Click);
 
             //feedFlowLayoutPanel change size
             this.feedFlowLayoutPanel.SizeChanged += new EventHandler(FeedFlowLayoutPanel__SizeChanged);
@@ -175,7 +179,13 @@ namespace brickBulletin
             foreach (Post p in sortedPosts)
             {
                 GeneratePostControl(p);
-            }     
+            }
+
+            foreach (Control c in feedFlowLayoutPanel.Controls)
+            {
+                c.ForeColor = Program.ForeColor;
+                c.BackColor = Program.BackColor;
+            }
         }
 
         /*
@@ -220,7 +230,22 @@ namespace brickBulletin
         private void SettingsButton__Click(object sender, EventArgs e)
         {
             // Open Settings Form
-
+            SettingsForm sf = new SettingsForm();
+            sf.ShowDialog();
+            this.BackColor = Program.BackColor;
+            this.ForeColor = Program.ForeColor;
+            this.Font = new Font("Arial", Program.homepageSize, FontStyle.Regular);
+            filterFlowLayoutPanel.BackColor = Program.BackColor;
+            feedFlowLayoutPanel.BackColor = Program.BackColor;
+            foreach (Control c in splitContainer1.Panel1.Controls)
+            {
+                c.BackColor = Program.BackColor;
+            }
+            foreach (Control c in feedFlowLayoutPanel.Controls)
+            {
+                c.ForeColor = Program.ForeColor;
+                c.BackColor = Program.BackColor;
+            }
         }
 
         private void CreatePostButton__Click(object sender, EventArgs e)
@@ -239,6 +264,16 @@ namespace brickBulletin
         private void FollowButton__Click(object sender, EventArgs e)
         {
             // Follow groups that is currently being viewed
+            if (Program.groups.ContainsKey(this.currentPage))
+            {
+                Program.currentUser.followedUsers.Add(Program.groups[this.currentPage]);
+            }
+        }
+
+        private void HomeButton__Click(object sender, EventArgs e)
+        {
+            this.currentPage = null;
+            RefreshFeed();
         }
 
         // Filter Buttons
@@ -254,11 +289,13 @@ namespace brickBulletin
                     {
                         this.currentPage = null;
                         fb.BackColor = Color.LightGray;
+                        fb.ForeColor = Program.ForeColor;
                     }
                     else
                     {
                         this.currentPage = fb.Text;
                         fb.BackColor = Color.FromArgb(247, 105, 2);
+                        fb.ForeColor = Color.Black;
                     }
                 }
                 else

@@ -19,7 +19,10 @@ namespace FinalExamJsonSingleton
             mySingleton.Save(player);
 
             PlayerSettings loadedSettings = mySingleton.Load();
-            Console.WriteLine(loadedSettings.player_name); // should say "dschuh" if saved and loaded correctly
+            Console.WriteLine(": " + loadedSettings.player_name);
+            Console.WriteLine("level: " + loadedSettings.level);
+            Console.WriteLine(": " + loadedSettings.player_name);
+            Console.WriteLine(": " + loadedSettings.player_name);
         }
     }
 

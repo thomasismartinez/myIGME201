@@ -1,6 +1,7 @@
 ﻿using brickBulletin;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,17 @@ namespace brickBulletin
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        
+
+        //Colors
+        public static Color BackColor = Color.FromArgb(255, 255, 255);
+        public static Color ForeColor = Color.FromArgb(00, 00, 00);
+
+        //Font Size
+        public static int normalSize = Convert.ToInt32(8.25);
+        public static int homepageSize = Convert.ToInt32(7.8);
+        public static int postDialogueSize = Convert.ToInt32(9.75);
+        public static int postCreationSize = Convert.ToInt32(12);
+
         // Sorted List of All Groups that can post
         public static SortedList<string, User> groups = new SortedList<string, User>();
 

@@ -80,7 +80,7 @@
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainerMain.Size = new System.Drawing.Size(1028, 569);
-            this.splitContainerMain.SplitterDistance = 147;
+            this.splitContainerMain.SplitterDistance = 194;
             this.splitContainerMain.TabIndex = 0;
             // 
             // ritLogo
@@ -132,7 +132,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.bodyTextBox);
-            this.splitContainer3.Size = new System.Drawing.Size(877, 569);
+            this.splitContainer3.Size = new System.Drawing.Size(830, 569);
             this.splitContainer3.SplitterDistance = 65;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -144,7 +144,7 @@
             this.headingTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.headingTextBox.MaxLength = 70;
             this.headingTextBox.Name = "headingTextBox";
-            this.headingTextBox.Size = new System.Drawing.Size(877, 65);
+            this.headingTextBox.Size = new System.Drawing.Size(830, 65);
             this.headingTextBox.TabIndex = 0;
             this.headingTextBox.Text = "Type your heading here";
             this.headingTextBox.WordWrap = false;
@@ -157,7 +157,7 @@
             this.bodyTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bodyTextBox.MaxLength = 1000;
             this.bodyTextBox.Name = "bodyTextBox";
-            this.bodyTextBox.Size = new System.Drawing.Size(877, 500);
+            this.bodyTextBox.Size = new System.Drawing.Size(830, 500);
             this.bodyTextBox.TabIndex = 0;
             this.bodyTextBox.Text = "Type your body text here";
             // 

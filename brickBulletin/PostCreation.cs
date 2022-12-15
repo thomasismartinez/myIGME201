@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Colby Heaton
+
 namespace brickBulletin
 {
     public partial class PostCreationForm : Form
@@ -19,6 +21,11 @@ namespace brickBulletin
             this.realCancelButton.Click += new EventHandler(CancelButton__Clicked);
 
             this.realPostButton.Click += new EventHandler(PostButton__Clicked);
+
+            // Style
+            this.BackColor = Program.BackColor;
+            this.ForeColor = Program.ForeColor;
+            this.Font = new Font("Arial", Program.postCreationSize, FontStyle.Regular);
         }
 
         private void CancelButton__Clicked(object sender, EventArgs e)
