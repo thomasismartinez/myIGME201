@@ -56,8 +56,24 @@ namespace brickBulletin
 
         private void LoginButton__Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (Program.users.ContainsKey(this.usernameTextBox.Text) && Program.users[this.usernameTextBox.Text].password == this.passwordTextBox.Text)
+            {
+                Program.currentUser = Program.users[this.usernameTextBox.Text];
+                this.Hide();
+            }
+            else if (Program.groups.ContainsKey(this.usernameTextBox.Text) && Program.groups[this.usernameTextBox.Text].password == this.passwordTextBox.Text)
+            {
+                Program.currentUser = Program.groups[this.usernameTextBox.Text];
+                this.Hide();
+            }
+            // invalid username
+            else
+            {
+                this.usernameTextBox.Text = "Invalid Username";
+                this.passwordTextBox.Text = "Or Invalid Password";
+            }
         }
+
 
         private void SignupButton__Click(object sender, EventArgs e)
         {
@@ -67,6 +83,7 @@ namespace brickBulletin
 
         private void GuestButton__Click(object sender, EventArgs e)
         {
+            Program.currentUser = new User("Guest", "", false);
             this.Hide();
         }
     }

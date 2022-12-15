@@ -43,6 +43,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.filterFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.feedFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.pageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -122,6 +123,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.pageLabel);
             this.splitContainer1.Panel1.Controls.Add(this.userLabel);
             this.splitContainer1.Panel1.Controls.Add(this.followButton);
             this.splitContainer1.Panel1.Controls.Add(this.refreshButton);
@@ -199,6 +201,16 @@
             this.feedFlowLayoutPanel.TabIndex = 6;
             this.feedFlowLayoutPanel.WrapContents = false;
             // 
+            // pageLabel
+            // 
+            this.pageLabel.AutoSize = true;
+            this.pageLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageLabel.Location = new System.Drawing.Point(570, 85);
+            this.pageLabel.Name = "pageLabel";
+            this.pageLabel.Size = new System.Drawing.Size(61, 23);
+            this.pageLabel.TabIndex = 12;
+            this.pageLabel.Text = "Home";
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -238,6 +250,7 @@
         private System.Windows.Forms.FlowLayoutPanel feedFlowLayoutPanel;
         private System.Windows.Forms.Button followButton;
         private System.Windows.Forms.Label userLabel;
+        private System.Windows.Forms.Label pageLabel;
     }
 }
 

@@ -34,13 +34,15 @@
             this.passLabel = new System.Windows.Forms.Label();
             this.createButton = new System.Windows.Forms.Button();
             this.userTextBox = new System.Windows.Forms.TextBox();
-            this.passTextBox = new System.Windows.Forms.TextBox();
+            this.passTextBox1 = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.passTextBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.userErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.passErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.reenterErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.unErrorLabel = new System.Windows.Forms.Label();
+            this.pwErrorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reenterErrorProvider)).BeginInit();
@@ -94,13 +96,13 @@
             this.userTextBox.Size = new System.Drawing.Size(165, 22);
             this.userTextBox.TabIndex = 4;
             // 
-            // passTextBox
+            // passTextBox1
             // 
-            this.passTextBox.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passTextBox.Location = new System.Drawing.Point(108, 211);
-            this.passTextBox.Name = "passTextBox";
-            this.passTextBox.Size = new System.Drawing.Size(165, 22);
-            this.passTextBox.TabIndex = 5;
+            this.passTextBox1.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passTextBox1.Location = new System.Drawing.Point(108, 211);
+            this.passTextBox1.Name = "passTextBox1";
+            this.passTextBox1.Size = new System.Drawing.Size(165, 22);
+            this.passTextBox1.TabIndex = 5;
             // 
             // cancelButton
             // 
@@ -112,13 +114,13 @@
             this.cancelButton.Text = "CANCEL";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // passTextBox2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(108, 295);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 22);
-            this.textBox1.TabIndex = 8;
+            this.passTextBox2.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passTextBox2.Location = new System.Drawing.Point(108, 295);
+            this.passTextBox2.Name = "passTextBox2";
+            this.passTextBox2.Size = new System.Drawing.Size(165, 22);
+            this.passTextBox2.TabIndex = 8;
             // 
             // label2
             // 
@@ -142,21 +144,39 @@
             // 
             this.reenterErrorProvider.ContainerControl = this;
             // 
-            // Form2
+            // unErrorLabel
+            // 
+            this.unErrorLabel.AutoSize = true;
+            this.unErrorLabel.Location = new System.Drawing.Point(292, 135);
+            this.unErrorLabel.Name = "unErrorLabel";
+            this.unErrorLabel.Size = new System.Drawing.Size(0, 16);
+            this.unErrorLabel.TabIndex = 9;
+            // 
+            // pwErrorLabel
+            // 
+            this.pwErrorLabel.AutoSize = true;
+            this.pwErrorLabel.Location = new System.Drawing.Point(295, 211);
+            this.pwErrorLabel.Name = "pwErrorLabel";
+            this.pwErrorLabel.Size = new System.Drawing.Size(0, 16);
+            this.pwErrorLabel.TabIndex = 10;
+            // 
+            // Signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 413);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.pwErrorLabel);
+            this.Controls.Add(this.unErrorLabel);
+            this.Controls.Add(this.passTextBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.passTextBox);
+            this.Controls.Add(this.passTextBox1);
             this.Controls.Add(this.userTextBox);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.passLabel);
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.label1);
-            this.Name = "Form2";
+            this.Name = "Signup";
             this.Text = "Sign Up Page";
             ((System.ComponentModel.ISupportInitialize)(this.userErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passErrorProvider)).EndInit();
@@ -173,12 +193,14 @@
         private System.Windows.Forms.Label passLabel;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.TextBox userTextBox;
-        private System.Windows.Forms.TextBox passTextBox;
+        private System.Windows.Forms.TextBox passTextBox1;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox passTextBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider userErrorProvider;
         private System.Windows.Forms.ErrorProvider passErrorProvider;
         private System.Windows.Forms.ErrorProvider reenterErrorProvider;
+        private System.Windows.Forms.Label pwErrorLabel;
+        private System.Windows.Forms.Label unErrorLabel;
     }
 }

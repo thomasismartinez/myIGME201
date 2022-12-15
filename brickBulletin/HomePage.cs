@@ -17,8 +17,9 @@ namespace brickBulletin
     public partial class HomeForm : Form
     {
         private List<Post> feed;
-        private List<string> filteredUsers = new List<string>();
         private string currentGroupPage;
+
+        public string currentPage;
         public HomeForm()
         {
             InitializeComponent();
@@ -75,7 +76,7 @@ namespace brickBulletin
 
             // Generate default to logged-out view
             // guest user
-            User guest = new User("GUEST", "", false);
+            User guest = new User("Guest", "", false);
             Program.currentUser = guest;
 
             RefreshFeed();
@@ -138,26 +139,42 @@ namespace brickBulletin
         // Fill/Refresh feedFlowLayoutBox with up to date posts
         public void RefreshFeed()
         {
-            feed = new List<Post>();
-            IEnumerable<Post> sortedPosts = new List<Post>();
-            foreach (User fUser in Program.currentUser.followedUsers)
-            {
-                sortedPosts.Concat(fUser.posts);
-                feed.AddRange(fUser.posts);
-            }
-            // Add all post by fUser to sortedPosts in order of date
-            sortedPosts = (this.feed.OrderBy(x => x.created)).Reverse();
-
             // Clear feed
             this.feedFlowLayoutPanel.Controls.Clear();
+
+            feed = new List<Post>();
+            IEnumerable<Post> sortedPosts = new List<Post>();
+
+            // check if there is an active page
+            if (currentPage != null)
+            {
+                this.pageLabel.Text = currentPage;
+                feed = Program.groups[currentPage].posts;
+                if (Program.currentUser.name != "Guest")
+                {
+                    this.followButton.Visible = true;
+                }
+            }
+            // otherwise homepage
+            else
+            {
+                this.pageLabel.Text = "Home";
+                this.followButton.Visible = false;
+                foreach (User fUser in Program.currentUser.followedUsers)
+                {
+                    sortedPosts.Concat(fUser.posts);
+                    feed.AddRange(fUser.posts);
+                }
+                
+            }
+
+            // Add all post by fUser to sortedPosts in order of date
+            sortedPosts = (this.feed.OrderBy(x => x.created)).Reverse();
 
             // Populate feed with posts from allPosts that meet filter requirements
             foreach (Post p in sortedPosts)
             {
-                if (this.filteredUsers.Contains(p.creator) || this.filteredUsers.Count == 0 )
-                {
-                    GeneratePostControl(p);
-                }
+                GeneratePostControl(p);
             }     
         }
 
@@ -191,8 +208,14 @@ namespace brickBulletin
         private void SearchButton__Click(object sender, EventArgs e)
         {
             // Open Search Form
-            SearchForm sf = new SearchForm();
+            this.currentPage = null;
+            SearchForm sf = new SearchForm(this);
             sf.ShowDialog();
+
+            if (this.currentPage != null)
+            {
+                RefreshFeed();
+            }
         }
         private void SettingsButton__Click(object sender, EventArgs e)
         {
@@ -223,20 +246,26 @@ namespace brickBulletin
         {
             Button fb = (Button)sender;
 
-            string userFilter = fb.Text;
-            if (this.filteredUsers.Contains(userFilter))
+            foreach (Button b in this.filterFlowLayoutPanel.Controls)
             {
-                this.filteredUsers.Remove(fb.Text);
-                fb.BackColor = Color.LightGray;
+                if (b.Text == fb.Text)
+                {
+                    if (currentPage == fb.Text)
+                    {
+                        this.currentPage = null;
+                        fb.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        this.currentPage = fb.Text;
+                        fb.BackColor = Color.FromArgb(247, 105, 2);
+                    }
+                }
+                else
+                {
+                    b.BackColor = Color.LightGray;
+                }
             }
-            else
-            {
-                this.filteredUsers.Add(fb.Text);
-                fb.BackColor = Color.FromArgb(247, 105, 2);
-
-            }
-
-            List<string> test = filteredUsers;
 
             RefreshFeed();
         }
